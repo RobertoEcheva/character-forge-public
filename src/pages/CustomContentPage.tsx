@@ -17,6 +17,7 @@ import {
 import type { UserPack } from '../data/registry';
 import { customContentSchema } from '../data/schema';
 import { RulesProvider, useApp, useRules } from '../state/AppState';
+import { customLoadIssue } from '../storage/storage';
 import { ABILITIES, ABILITY_NAMES, EDITIONS, SKILLS, SKILL_IDS, type Edition, type Effect } from '../types/rules';
 import { downloadJson, readJsonFile } from '../storage/storage';
 import { CONTENT_TYPES, type ActionDraft, type ContentType, type Draft, type FeatureDraft, type Field, type NamedText, type SpellRow } from './customForms';
@@ -139,6 +140,9 @@ export default function CustomContentPage() {
     return true;
   };
 
+  // Re-read on every render: saving custom content clears it.
+  const loadIssue = customLoadIssue();
+
   return (
     <RulesProvider edition={edition}>
     <div className="custom">
@@ -149,6 +153,14 @@ export default function CustomContentPage() {
           Custom tag, and is included in exports you make here.
         </p>
       </header>
+      {loadIssue && (
+        <p className="notice" role="alert">
+          {loadIssue.unreadable
+            ? 'Your saved custom content couldn’t be read, so it isn’t loaded.'
+            : `${loadIssue.dropped} saved ${loadIssue.dropped === 1 ? 'entry' : 'entries'} couldn’t be read and ${loadIssue.dropped === 1 ? 'was' : 'were'} left out.`}{' '}
+          The original data is kept as a backup in this browser (dndb.custom.backup).
+        </p>
+      )}
       {/* Form errors show next to the Save button instead. */}
       {message && !(editing && message.kind === 'error') && <p className={message.kind === 'error' ? 'notice' : 'ok-note'}>{message.text}</p>}
 

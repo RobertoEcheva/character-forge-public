@@ -6,7 +6,7 @@ import { SpellPicker } from '../components/SpellPicker';
 import { SubclassPicker } from '../components/SubclassPicker';
 import { pendingChoices, type ChoiceInstance } from '../engine/collect';
 import { deriveSheet, fmtMod, type Sheet } from '../engine/derive';
-import { addLevel, applyStartingBundle, isCustomPick } from '../engine/ops';
+import { addLevel, applyStartingBundle, isCustomPick, applyBuildEdit } from '../engine/ops';
 import { BlazonPicker, BlazonShield } from '../components/Blazon';
 import { blazonOf, describeBlazon } from '../data/blazon';
 import { RichText } from '../keywords/RichText';
@@ -88,7 +88,8 @@ function WizardSteps() {
   const steps = STEPS.filter((s) => s !== 'spells' || sheet.casters.length > 0);
   const idx = steps.indexOf(current);
   const go = (s: Step) => navigate(`/c/${character.id}/build/${s}`);
-  const set = (c: Character) => update(() => c);
+  // Editing a finished character can change max HP; current HP moves with it.
+  const set = (c: Character) => update((prev) => applyBuildEdit(prev, c, registry));
 
   return (
     <div className="wizard">

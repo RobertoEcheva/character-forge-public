@@ -7,7 +7,7 @@ import type { CreatureDef } from '../types/creature';
 import type { Edition, SpeciesDef } from '../types/rules';
 import { deriveSheet } from './derive';
 import { critExpression, roll } from './dice';
-import { addLevel, applyDamage, applyDeathSave, changeHp, deathState } from './ops';
+import { addLevel, applyDamage, applyDeathSave, changeHp, currentHp, deathState, heal, longRest, removeLastLevel, rollLevelHp, setChoice, applyBuildEdit, withMaxHpDelta } from './ops';
 import { spellRolls } from './spells';
 
 const reg = { '2024': createRegistry(RULES['2024']), '2014': createRegistry(RULES['2014']) };
@@ -210,5 +210,119 @@ describe('table play: hits, crits and hit points', () => {
     const c = make('2024', 'fighter', 1, { inventory: [inv({ itemId: 'longsword', name: 'Longsword' })] });
     const props = deriveSheet(c, reg['2024']).attacks.find((a) => a.name === 'Longsword')!.properties;
     expect(props.filter((p) => p.startsWith('versatile'))).toEqual(['versatile (1d10)']);
+  });
+});
+
+describe('review fixes: death saves, damage at 0 HP, rests', () => {
+  const at0 = (c: Character, successes = 0, failures = 0): Character => ({ ...c, play: { ...c.play, hp: 0, deathSaves: { successes, failures } } });
+
+  it('a natural 1 is two failures even with a big bonus', () => {
+    const c = at0(newCharacter('t'));
+    expect(applyDeathSave(c, 1, 9).play.deathSaves).toEqual({ successes: 0, failures: 2 });
+  });
+
+  it('damage at 0 HP adds a failure, and wakes a stable character back to dying', () => {
+    const c = make('2024', 'fighter', 1);
+    const s = deriveSheet(c, reg['2024']);
+    expect(applyDamage(at0(c, 1, 1), s, 3).play.deathSaves).toEqual({ successes: 1, failures: 2 });
+    expect(applyDamage(at0(c, 3, 0), s, 3).play.deathSaves).toEqual({ successes: 0, failures: 1 });
+    // Fully absorbed by Temporary HP: no failure.
+    const temp = { ...at0(c, 0, 1), play: { ...at0(c, 0, 1).play, tempHp: 5 } };
+    expect(applyDamage(temp, s, 3).play.deathSaves).toEqual({ successes: 0, failures: 1 });
+    // Dropping to 0 from above is not a failure.
+    expect(applyDamage(c, s, s.maxHp).play.deathSaves).toEqual({ successes: 0, failures: 0 });
+  });
+
+  it('a 2014 long rest restores half your Hit Dice; 2024 restores all', () => {
+    for (const [edition, back] of [['2014', 3], ['2024', 6]] as const) {
+      const c = make(edition, 'fighter', 6);
+      const spent = { ...c, play: { ...c.play, hitDiceUsed: { d10: 6 } } };
+      const rested = longRest(spent, deriveSheet(spent, reg[edition]));
+      expect(6 - (rested.play.hitDiceUsed.d10 ?? 0)).toBe(back);
+    }
+  });
+});
+
+describe('review fixes: hit points follow max HP', () => {
+  it('caps current HP at max (exhaustion 4 halves max in 2014)', () => {
+    const c = make('2014', 'fighter', 3);
+    const tired = { ...c, play: { ...c.play, hp: 25, exhaustion: 4 } };
+    const s = deriveSheet(tired, reg['2014']);
+    expect(currentHp(tired, s)).toBe(s.maxHp);
+    expect(applyDamage(tired, s, 1).play.hp).toBe(s.maxHp - 1);
+    expect(heal(tired, s, 1).play.hp).toBeNull();
+  });
+
+  it('level up raises current HP by the whole max HP gain, Con included', () => {
+    const c = make('2024', 'fighter', 2, { baseAbilities: { str: 15, dex: 13, con: 16, int: 8, wis: 12, cha: 10 } });
+    const hurt = { ...c, play: { ...c.play, hp: 10 } };
+    const before = deriveSheet(hurt, reg['2024']).maxHp;
+    const up = addLevel(hurt, 'fighter', reg['2024']);
+    expect(up.play.hp).toBe(10 + deriveSheet(up, reg['2024']).maxHp - before);
+  });
+
+  it('undo this level restores the character as it was', () => {
+    const c0 = make('2024', 'fighter', 3, { subclasses: { fighter: 'champion' } });
+    const c = { ...c0, play: { ...c0.play, hp: 20, hitDiceUsed: { d10: 3 } } };
+    let up = addLevel(c, 'fighter', reg['2024']);
+    const key = deriveSheet(up, reg['2024']).collected.choices.find((x) => x.key.includes('fighter-ability-score-improvement'))!.key;
+    up = setChoice(up, key, ['ability-score-improvement']);
+    up = { ...up, play: { ...up.play, hitDiceUsed: { d10: 4 } } };
+    const back = removeLastLevel(up, reg['2024']);
+    expect(back.levels).toEqual(c.levels);
+    expect(back.subclasses).toEqual(c.subclasses);
+    expect(back.choices).toEqual(c.choices);
+    expect(back.play.hp).toBe(20);
+    expect(back.play.hitDiceUsed).toEqual({ d10: 3 });
+  });
+
+  it('undoing the subclass level removes the subclass', () => {
+    const c = make('2024', 'fighter', 2);
+    const up = { ...addLevel(c, 'fighter', reg['2024']), subclasses: { fighter: 'champion' } };
+    expect(removeLastLevel(up, reg['2024']).subclasses).toEqual({});
+  });
+});
+
+describe('review fixes, round 2', () => {
+  const c = make('2024', 'fighter', 1);
+  const s = deriveSheet(c, reg['2024']);
+  const at0 = (successes: number, failures: number): Character => ({ ...c, play: { ...c.play, hp: 0, deathSaves: { successes, failures } } });
+
+  it('damage on a stable character starts over at one failure', () => {
+    expect(applyDamage(at0(3, 2), s, 3).play.deathSaves).toEqual({ successes: 0, failures: 1 });
+  });
+
+  it('massive damage kills outright', () => {
+    expect(deathState(applyDamage(at0(0, 0), s, s.maxHp).play.deathSaves)).toBe('dead');
+    // From full HP: what's left after reaching 0 must be at least max HP.
+    expect(deathState(applyDamage(c, s, 2 * s.maxHp).play.deathSaves)).toBe('dead');
+    expect(deathState(applyDamage(c, s, 2 * s.maxHp - 1).play.deathSaves)).toBe('dying');
+  });
+
+  it('a max HP increase does not lift a character off 0 HP', () => {
+    const down = at0(0, 2);
+    const up = addLevel(down, 'fighter', reg['2024']);
+    expect(up.play.hp).toBe(0);
+    expect(withMaxHpDelta(down, { ...down, levels: up.levels }, reg['2024']).play.hp).toBe(0);
+  });
+});
+
+describe('review fixes, round 3', () => {
+  it('a build edit made from an older copy keeps the latest HP, death saves and Hit Dice', () => {
+    const base = make('2024', 'fighter', 4, { baseAbilities: { str: 15, dex: 13, con: 14, int: 8, wis: 12, cha: 10 } });
+    const seen = { ...base, play: { ...base.play, hp: 20 } };
+    // The page drew `seen`; meanwhile damage was taken and a Hit Die spent.
+    const latest = { ...applyDamage(seen, deriveSheet(seen, reg['2024']), 5), play: { ...applyDamage(seen, deriveSheet(seen, reg['2024']), 5).play, hitDiceUsed: { d10: 1 } } };
+    // The edit (built from `seen`) raises Con by 2: +1 max HP per level.
+    const edit = { ...seen, baseAbilities: { ...seen.baseAbilities, con: 16 } };
+    const out = applyBuildEdit(latest, edit, reg['2024']);
+    expect(out.baseAbilities.con).toBe(16);
+    expect(out.play.hp).toBe(15 + 4);
+    expect(out.play.hitDiceUsed).toEqual({ d10: 1 });
+  });
+
+  it('a rolled level gets at least 1 HP even for a class the rules no longer have', () => {
+    expect(rollLevelHp('no-such-class', reg['2024'], (sides) => sides)).toBe(8);
+    expect(rollLevelHp('fighter', reg['2024'], (sides) => sides)).toBe(10);
   });
 });

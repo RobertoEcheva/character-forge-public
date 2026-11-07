@@ -5,7 +5,7 @@ import { FeatureList } from '../components/Features';
 import { SpellPicker } from '../components/SpellPicker';
 import { SubclassPicker } from '../components/SubclassPicker';
 import { deriveSheet } from '../engine/derive';
-import { addLevel, fixedHp, multiclassBlockers, recordLevelSpells, removeLastLevel } from '../engine/ops';
+import { addLevel, applyBuildEdit, fixedHp, multiclassBlockers, recordLevelSpells, removeLastLevel, rollLevelHp } from '../engine/ops';
 import { RulesProvider, useRules, useCharacter } from '../state/AppState';
 
 export default function LevelUp() {
@@ -56,7 +56,7 @@ function LevelUpView() {
         {sheet.collected.needsSubclass.includes(last.classId) || (classLevel === cls.subclassLevel && sub) ? (
           <section className="detail">
             <h2>Subclass</h2>
-            <SubclassPicker character={character} classId={last.classId} onChange={(c) => update(() => c)} />
+            <SubclassPicker character={character} classId={last.classId} onChange={(c) => update((prev) => applyBuildEdit(prev, c, registry))} />
           </section>
         ) : null}
 
@@ -73,7 +73,7 @@ function LevelUpView() {
             character={character}
             sheet={sheet}
             filter={sticky}
-            onChange={(c) => update(() => c)}
+            onChange={(c) => update((prev) => applyBuildEdit(prev, c, registry))}
             emptyText="No open choices."
           />
         </section>
@@ -81,7 +81,7 @@ function LevelUpView() {
         {sheet.casters.map((k) => (
           <section key={k.classId} className="detail">
             <h2>{k.name} spells</h2>
-            <SpellPicker character={character} caster={k} sheet={sheet} onChange={(c) => update((prev) => recordLevelSpells(prev, c))} />
+            <SpellPicker character={character} caster={k} sheet={sheet} onChange={(c) => update((prev) => recordLevelSpells(prev, applyBuildEdit(prev, c, registry)))} />
           </section>
         ))}
 
@@ -90,7 +90,7 @@ function LevelUpView() {
             type="button"
             className="btn-danger"
             onClick={() => {
-              update(removeLastLevel);
+              update((c) => removeLastLevel(c, registry));
               setParams({});
             }}
           >
@@ -143,7 +143,9 @@ function LevelUpView() {
           className="btn-primary"
           disabled={!canLevel}
           onClick={() => {
-            update((c) => addLevel(c, classId, registry, hpMode));
+            // Roll outside the updater so it stays pure.
+            const rolled = rollLevelHp(classId, registry);
+            update((c) => addLevel(c, classId, registry, hpMode, () => rolled));
             setParams({ step: 'choices' });
           }}
         >

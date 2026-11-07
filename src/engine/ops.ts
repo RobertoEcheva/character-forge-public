@@ -2,9 +2,10 @@ import type { Registry } from '../data/registry';
 import type { Character, InventoryItem } from '../types/character';
 import { emptyPlayState } from '../types/character';
 import type { EquipmentBundle } from '../types/rules';
+import { collect } from './collect';
 import type { Rng } from './dice';
 import { defaultRng } from './dice';
-import type { Sheet } from './derive';
+import { deriveSheet, type Sheet } from './derive';
 
 export const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
 
@@ -49,23 +50,98 @@ export function addLevel(
   const hd = reg.classes.get(classId)?.hitDie ?? 8;
   const first = char.levels.length === 0;
   const hpGain = first ? hd : mode === 'roll' ? rng(hd) : fixedHp(hd);
-  return {
+  const next: Character = {
     ...char,
     levels: [
       ...char.levels,
       // Levels after the first record the spells learned while leveling (shown in the level history).
       { classId, hpGain, ...(mode === 'roll' && !first ? { rolled: true } : {}), ...(first ? {} : { spells: { added: [], removed: [] } }) },
     ],
-    // Healing to full on level-up is not a rule; keep current HP but grow with max.
-    play: { ...char.play, hp: char.play.hp === null ? null : char.play.hp + hpGain },
   };
+  // Healing to full on level-up is not a rule; keep current HP but grow with max.
+  return withMaxHpDelta(char, next, reg);
 }
 
-/** Removes the last level gained along with choices that only existed because of it. */
-export function removeLastLevel(char: Character): Character {
+/** Hit points for a rolled level: the class's hit die (d8 if the class is unknown). */
+export const rollLevelHp = (classId: string, reg: Registry, rng: Rng = defaultRng) => rng(reg.classes.get(classId)?.hitDie ?? 8);
+
+/**
+ * Applies an edit to the character's build (choices, subclass, spells, wizard steps) that a component made
+ * from the copy it last drew. Build editors never change play state, so the latest play state (HP, slots,
+ * Hit Dice, death saves) is kept from `prev`, and current HP then follows any change to max HP.
+ */
+export function applyBuildEdit(prev: Character, edited: Character, reg: Registry): Character {
+  return withMaxHpDelta(prev, { ...edited, play: prev.play }, reg);
+}
+
+/** Current hit points, never above the maximum (null in storage means full). */
+export const currentHp = (char: Character, sheet: Sheet) => Math.min(char.play.hp ?? sheet.maxHp, sheet.maxHp);
+
+/**
+ * Moves current HP by however much max HP changed between `prev` and `next` (level up, Con increase,
+ * a feature that grants HP, undoing a level). Full HP stays full; a conscious character stays above 0.
+ */
+export function withMaxHpDelta(prev: Character, next: Character, reg: Registry): Character {
+  // Full stays full; 0 HP stays 0 (more max HP doesn't wake a dying character).
+  if (next.play.hp === null || next.play.hp === 0) return next;
+  const before = deriveSheet(prev, reg).maxHp;
+  const after = deriveSheet(next, reg).maxHp;
+  if (before === after) return next;
+  const hp = next.play.hp;
+  const moved = Math.min(after, Math.max(hp > 0 ? 1 : 0, Math.min(hp, before) + after - before));
+  return { ...next, play: { ...next.play, hp: moved } };
+}
+
+/**
+ * Removes the last level gained along with what came with it: choices that only existed because of
+ * that level, the subclass if the class drops below its subclass level, the spells learned or replaced
+ * on that level, and the hit points and Hit Dice it added.
+ */
+export function removeLastLevel(char: Character, reg: Registry): Character {
   if (char.levels.length <= 1) return char;
+  const last = char.levels.at(-1)!;
   const levels = char.levels.slice(0, -1);
-  return { ...char, levels };
+  const classLevel = levels.filter((l) => l.classId === last.classId).length;
+  const cls = reg.classes.get(last.classId);
+
+  const subclasses = { ...char.subclasses };
+  if (cls && classLevel < cls.subclassLevel) delete subclasses[last.classId];
+
+  // Spells: drop what this level added, put back what it replaced.
+  const added = new Set(last.spells?.added ?? []);
+  const spells: Character['spells'] = {};
+  for (const [id, s] of Object.entries(char.spells))
+    spells[id] = { cantrips: s.cantrips.filter((x) => !added.has(x)), prepared: s.prepared.filter((x) => !added.has(x)) };
+  for (const id of last.spells?.removed ?? []) {
+    // Back into the class list it most likely came from: this level's class if the spell is on its list,
+    // otherwise another class the character still has whose list includes it.
+    const on = reg.spells.get(id)?.classes ?? [];
+    const owner = on.includes(last.classId) ? last.classId : (Object.keys(spells).find((k) => k !== last.classId && on.includes(k)) ?? last.classId);
+    const list = (spells[owner] ??= { cantrips: [], prepared: [] });
+    const target = reg.spells.get(id)?.level === 0 ? list.cantrips : list.prepared;
+    if (!target.includes(id)) target.push(id);
+  }
+  if (classLevel === 0) delete spells[last.classId];
+
+  let next: Character = { ...char, levels, subclasses, spells };
+
+  // Choices that the removed level opened (and anything nested under them).
+  const after = new Set(collect(next, reg).choices.map((c) => c.key));
+  const gone = collect(char, reg).choices.filter((c) => !after.has(c.key)).map((c) => c.key);
+  if (gone.length) {
+    const choices = { ...char.choices };
+    for (const k of gone) delete choices[k];
+    next = { ...next, choices };
+  }
+
+  next = withMaxHpDelta(char, next, reg);
+  const dice = deriveSheet(next, reg).hitDice;
+  const hitDiceUsed: Record<string, number> = {};
+  for (const [die, used] of Object.entries(next.play.hitDiceUsed)) {
+    const total = dice.find((h) => h.die === die)?.total ?? 0;
+    if (Math.min(used, total) > 0) hitDiceUsed[die] = Math.min(used, total);
+  }
+  return { ...next, play: { ...next.play, hitDiceUsed } };
 }
 
 const allSpells = (c: Character) =>
@@ -152,6 +228,24 @@ export function shortRest(char: Character, sheet: Sheet): Character {
   return { ...char, play: { ...char.play, counters, pactSlotsUsed: 0 } };
 }
 
+/**
+ * Hit Dice still spent after a Long Rest. 2024: you regain all of them. 2014: up to half your total
+ * (minimum 1), largest dice first.
+ */
+function hitDiceAfterLongRest(char: Character, sheet: Sheet): Record<string, number> {
+  if (char.ruleset !== '2014') return {};
+  const total = sheet.hitDice.reduce((n, h) => n + h.total, 0);
+  let regain = Math.max(1, Math.floor(total / 2));
+  const left: Record<string, number> = {};
+  const bySize = Object.entries(char.play.hitDiceUsed).sort(([a], [b]) => Number(b.slice(1)) - Number(a.slice(1)));
+  for (const [die, used] of bySize) {
+    const back = Math.min(used, regain);
+    regain -= back;
+    if (used - back > 0) left[die] = used - back;
+  }
+  return left;
+}
+
 export function longRest(char: Character, sheet: Sheet): Character {
   const fresh = emptyPlayState();
   return {
@@ -160,6 +254,7 @@ export function longRest(char: Character, sheet: Sheet): Character {
     inventory: char.inventory.map((i) => (i.chargesUsed ? { ...i, chargesUsed: 0 } : i)),
     play: {
       ...fresh,
+      hitDiceUsed: hitDiceAfterLongRest(char, sheet),
       exhaustion: Math.max(0, char.play.exhaustion - 1),
       conditions: char.play.conditions,
       heroicInspiration:
@@ -174,7 +269,7 @@ export function spendHitDie(char: Character, sheet: Sheet, die: string, rng: Rng
   const used = char.play.hitDiceUsed[die] ?? 0;
   if (used >= total) return { char, healed: 0 };
   const healed = Math.max(1, rng(Number(die.slice(1))) + sheet.abilities.con.mod);
-  const current = char.play.hp ?? sheet.maxHp;
+  const current = currentHp(char, sheet);
   return {
     healed,
     char: {
@@ -198,10 +293,25 @@ export function changeHp(cur: { hp: number; temp: number }, max: number, kind: '
   return { hp: Math.max(0, cur.hp - (amount - absorbed)), temp: cur.temp - absorbed };
 }
 
-/** Apply damage: temp HP first, then HP. */
+/**
+ * Apply damage: temp HP first, then HP. Damage that reaches a character already at 0 HP is a failed
+ * death saving throw (a stable character starts over at one failure). Massive damage kills outright:
+ * at 0 HP, damage of at least max HP; from above 0, what's left after reaching 0 being at least max HP.
+ */
 export function applyDamage(char: Character, sheet: Sheet, amount: number): Character {
-  const next = changeHp({ hp: char.play.hp ?? sheet.maxHp, temp: char.play.tempHp }, sheet.maxHp, 'damage', amount);
-  return { ...char, play: { ...char.play, tempHp: next.temp, hp: next.hp } };
+  const hp = currentHp(char, sheet);
+  const next = changeHp({ hp, temp: char.play.tempHp }, sheet.maxHp, 'damage', amount);
+  const through = Math.max(0, amount - char.play.tempHp);
+  const dead = { successes: 0, failures: 3 };
+  let deathSaves = char.play.deathSaves;
+  if (hp === 0 && through > 0) {
+    if (through >= sheet.maxHp) deathSaves = dead;
+    else if (deathState(deathSaves) === 'stable') deathSaves = { successes: 0, failures: 1 };
+    else deathSaves = { ...deathSaves, failures: Math.min(3, deathSaves.failures + 1) };
+  } else if (hp > 0 && next.hp === 0 && through - hp >= sheet.maxHp) {
+    deathSaves = dead;
+  }
+  return { ...char, play: { ...char.play, tempHp: next.temp, hp: next.hp, deathSaves } };
 }
 
 export type DeathState = 'dying' | 'stable' | 'dead';
@@ -221,14 +331,16 @@ export function applyDeathSave(char: Character, d20: number, bonus = 0): Charact
   if (deathState(saves) !== 'dying') return char;
   if (d20 === 20) return { ...char, play: { ...char.play, hp: 1, deathSaves: { successes: 0, failures: 0 } } };
   const next =
-    d20 + bonus >= 10
-      ? { ...saves, successes: Math.min(3, saves.successes + 1) }
-      : { ...saves, failures: Math.min(3, saves.failures + (d20 === 1 ? 2 : 1)) };
+    d20 === 1
+      ? { ...saves, failures: Math.min(3, saves.failures + 2) }
+      : d20 + bonus >= 10
+        ? { ...saves, successes: Math.min(3, saves.successes + 1) }
+        : { ...saves, failures: Math.min(3, saves.failures + 1) };
   return { ...char, play: { ...char.play, deathSaves: next } };
 }
 
 export function heal(char: Character, sheet: Sheet, amount: number): Character {
-  const hp = Math.min(sheet.maxHp, (char.play.hp ?? sheet.maxHp) + amount);
+  const hp = Math.min(sheet.maxHp, currentHp(char, sheet) + amount);
   const deathSaves = hp > 0 ? { successes: 0, failures: 0 } : char.play.deathSaves;
   return { ...char, play: { ...char.play, hp: hp >= sheet.maxHp ? null : hp, deathSaves } };
 }

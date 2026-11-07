@@ -4,7 +4,7 @@ import { RULES } from '../data/srd';
 import { newCharacter, type Character } from '../types/character';
 import { deriveSheet } from './derive';
 import { levelHistory } from './history';
-import { addLevel, recordLevelSpells, setChoice } from './ops';
+import { addLevel, recordLevelSpells, removeLastLevel, setChoice } from './ops';
 
 const reg = createRegistry(RULES['2024']);
 const fixed = () => 1;
@@ -75,5 +75,32 @@ describe('recordLevelSpells', () => {
     expect(next.levels[1].spells).toEqual({ added: ['sleep'], removed: [] });
     const one = build(['wizard']);
     expect(recordLevelSpells(one, withSpells(one, ['sleep'])).levels[0].spells).toBeUndefined();
+  });
+});
+
+describe('removeLastLevel and spells', () => {
+  it('undoes the spells learned and replaced on that level', () => {
+    const one = { ...build(['wizard']), spells: { wizard: { cantrips: ['fire-bolt'], prepared: ['shield', 'sleep'] } } };
+    const two = addLevel(one, 'wizard', reg, 'roll', fixed);
+    const learned = recordLevelSpells(two, { ...two, spells: { wizard: { cantrips: ['fire-bolt'], prepared: ['shield', 'magic-missile', 'burning-hands'] } } });
+    const back = removeLastLevel(learned, reg);
+    expect(back.spells.wizard.cantrips).toEqual(['fire-bolt']);
+    expect([...back.spells.wizard.prepared].sort()).toEqual(['shield', 'sleep']);
+  });
+
+  it('drops the spell list of a class that is gone', () => {
+    const c = build(['fighter']);
+    const mc = addLevel(c, 'wizard', reg, 'roll', fixed);
+    const withList = recordLevelSpells(mc, { ...mc, spells: { wizard: { cantrips: [], prepared: ['sleep'] } } });
+    expect(removeLastLevel(withList, reg).spells.wizard).toBeUndefined();
+  });
+
+  it('puts a replaced spell back in the class list it came from', () => {
+    const c = { ...build(['wizard', 'cleric']), spells: { wizard: { cantrips: [], prepared: ['sleep'] }, cleric: { cantrips: [], prepared: ['bless'] } } };
+    const up = addLevel(c, 'cleric', reg, 'roll', fixed);
+    const swapped = recordLevelSpells(up, { ...up, spells: { wizard: { cantrips: [], prepared: ['magic-missile'] }, cleric: { cantrips: [], prepared: ['bless'] } } });
+    const back = removeLastLevel(swapped, reg);
+    expect(back.spells.wizard.prepared).toEqual(['sleep']);
+    expect(back.spells.cleric.prepared).toEqual(['bless']);
   });
 });

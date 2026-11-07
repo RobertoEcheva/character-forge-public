@@ -3,7 +3,7 @@ import { createRegistry, mergeRules, type CustomContent, type Registry } from '.
 import { RULES } from '../data/srd';
 import { roll, type RollMode, type RollResult } from '../engine/dice';
 import { createLinker, type Linker } from '../keywords/linker';
-import { loadCharacters, loadCustom, saveCharacters, saveCustom } from '../storage/storage';
+import { clearCustomLoadIssue, loadCharacters, loadCustom, saveCharacters, saveCustom } from '../storage/storage';
 import type { Character } from '../types/character';
 import { EDITIONS, type Edition } from '../types/rules';
 
@@ -17,6 +17,8 @@ interface AppState {
   rules: Record<Edition, Rules>;
   characters: Record<string, Character>;
   saveCharacter: (c: Character) => void;
+  /** Applies fn to the latest stored version of a character (safe for several updates in a row). */
+  updateCharacter: (id: string, fn: (c: Character) => Character) => void;
   deleteCharacter: (id: string) => void;
   custom: CustomContent;
   setCustom: (c: CustomContent) => void;
@@ -46,6 +48,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const saveCharacter = useCallback((c: Character) => {
     setCharacters((all) => ({ ...all, [c.id]: { ...c, updatedAt: new Date().toISOString() } }));
   }, []);
+  const updateCharacter = useCallback((id: string, fn: (c: Character) => Character) => {
+    setCharacters((all) => (all[id] ? { ...all, [id]: { ...fn(all[id]), updatedAt: new Date().toISOString() } } : all));
+  }, []);
   const deleteCharacter = useCallback((id: string) => {
     setCharacters((all) => {
       const next = { ...all };
@@ -54,13 +59,15 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     });
   }, []);
   const setCustom = useCallback((c: CustomContent) => {
+    const ok = saveCustom(c);
+    if (ok) clearCustomLoadIssue();
     setCustomState(c);
-    setStorageOk(saveCustom(c));
+    setStorageOk(ok);
   }, []);
 
   const value = useMemo(
-    () => ({ rules, characters, saveCharacter, deleteCharacter, custom, setCustom, storageOk }),
-    [rules, characters, saveCharacter, deleteCharacter, custom, setCustom, storageOk],
+    () => ({ rules, characters, saveCharacter, updateCharacter, deleteCharacter, custom, setCustom, storageOk }),
+    [rules, characters, saveCharacter, updateCharacter, deleteCharacter, custom, setCustom, storageOk],
   );
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
@@ -86,13 +93,15 @@ export function useRules(): Rules & { edition: Edition } {
 
 /** Character by id plus an updater that persists. */
 export function useCharacter(id: string | undefined) {
-  const { characters, saveCharacter } = useApp();
+  const { characters, updateCharacter } = useApp();
   const character = id ? characters[id] : undefined;
+  // fn runs on the latest state, not the render-time copy, so quick successive updates don't overwrite each other.
+  // Keep fn pure (roll dice before calling update).
   const update = useCallback(
     (fn: (c: Character) => Character) => {
-      if (character) saveCharacter(fn(character));
+      if (id) updateCharacter(id, fn);
     },
-    [character, saveCharacter],
+    [id, updateCharacter],
   );
   return [character, update] as const;
 }

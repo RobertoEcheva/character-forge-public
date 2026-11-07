@@ -10,8 +10,8 @@ import { pendingChoices } from '../engine/collect';
 import { featureRows, groupRows } from '../engine/featureRows';
 import { FeatureRowView } from '../components/Features';
 import { deriveSheet, fmtMod, type Sheet as SheetData } from '../engine/derive';
-import { d20 } from '../engine/dice';
-import { applyDamage, applyDeathSave, heal, longRest, shortRest, spendHitDie } from '../engine/ops';
+import { d20, defaultRng } from '../engine/dice';
+import { applyDamage, applyDeathSave, currentHp, heal, longRest, shortRest, spendHitDie, applyBuildEdit } from '../engine/ops';
 import { ActiveEffects } from '../sheet/ActiveEffects';
 import { Attacks } from '../sheet/Attacks';
 import { DeathSaves, Pips, RollButton, SheetProvider, withRollBonuses, type Update } from '../sheet/common';
@@ -109,10 +109,10 @@ function SheetView() {
           {sheet.collected.needsSubclass.map((classId) => (
             <div key={classId} style={{ marginBottom: '1rem' }}>
               <h3>{registry.classes.get(classId)?.name} subclass</h3>
-              <SubclassPicker character={character} classId={classId} onChange={(c) => update(() => c)} />
+              <SubclassPicker character={character} classId={classId} onChange={(c) => update((prev) => applyBuildEdit(prev, c, registry))} />
             </div>
           ))}
-          <ChoicesPanel character={character} sheet={sheet} filter={sticky} onChange={(c) => update(() => c)} />
+          <ChoicesPanel character={character} sheet={sheet} filter={sticky} onChange={(c) => update((prev) => applyBuildEdit(prev, c, registry))} />
         </section>
       )}
       {sheet.warnings.map((w) => (
@@ -244,7 +244,7 @@ function Combat({ character, sheet, update }: { character: Character; sheet: She
   const { registry } = useRules();
   const { rollDice } = useDice();
   const play = character.play;
-  const hp = play.hp ?? sheet.maxHp;
+  const hp = currentHp(character, sheet);
   const conditions = registry.data.keywords.filter((k) => k.kind === 'condition' && k.id !== 'exhaustion');
   const setPlay = (patch: Partial<Character['play']>) => update((c) => ({ ...c, play: { ...c.play, ...patch } }));
 
@@ -296,7 +296,8 @@ function Combat({ character, sheet, update }: { character: Character; sheet: She
         temp={play.tempHp}
         onDamage={(n) => update((c) => applyDamage(c, sheet, n))}
         onHeal={(n) => update((c) => heal(c, sheet, n))}
-        onTemp={(n) => setPlay({ tempHp: Math.max(play.tempHp, n) })}
+        // Temporary HP don't stack: keep the higher amount. Setting 0 clears them.
+        onTemp={(n) => update((c) => ({ ...c, play: { ...c.play, tempHp: n === 0 ? 0 : Math.max(c.play.tempHp, n) } }))}
       >
         {sheet.resistances.length > 0 && (
           <p className="small">
@@ -324,7 +325,10 @@ function Combat({ character, sheet, update }: { character: Character; sheet: She
         {sheet.hitDice.map((h) => {
           const used = play.hitDiceUsed[h.die] ?? 0;
           return (
-            <button key={h.die} type="button" className="btn-small" disabled={used >= h.total} title="Spend one to heal (short rest)" onClick={() => update((c) => spendHitDie(c, sheet, h.die).char)}>
+            <button key={h.die} type="button" className="btn-small" disabled={used >= h.total} title="Spend one to heal (short rest)" onClick={() => {
+              const face = defaultRng(Number(h.die.slice(1)));
+              update((c) => spendHitDie(c, sheet, h.die, () => face).char);
+            }}>
               {h.total - used}/{h.total} {h.die}
             </button>
           );

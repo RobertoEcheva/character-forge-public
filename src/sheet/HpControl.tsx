@@ -32,6 +32,8 @@ export function HpControl({
 }) {
   const [amount, setAmount] = useState('');
   const n = Math.max(0, Math.floor(Number(amount) || 0));
+  // Set temp also takes an explicit 0, to clear Temporary HP.
+  const typed = amount.trim() !== '';
   const pct = max > 0 ? Math.round((hp / max) * 100) : 0;
   const low = hp <= max / 2;
   const act = (fn: (n: number) => void) => () => (fn(n), setAmount(''));
@@ -64,7 +66,7 @@ export function HpControl({
           Heal
         </button>
         {onTemp && (
-          <button type="button" className={compact ? 'btn-small' : ''} disabled={!n} onClick={act(onTemp)}>
+          <button type="button" className={compact ? 'btn-small' : ''} disabled={!typed} onClick={act(onTemp)}>
             Set temp
           </button>
         )}

@@ -5,6 +5,7 @@ import { FeatureRowView } from '../components/Features';
 import { SubclassPicker } from '../components/SubclassPicker';
 import { deriveSheet, fmtMod } from '../engine/derive';
 import { levelHistory, type LevelStep } from '../engine/history';
+import { applyBuildEdit } from '../engine/ops';
 import { RulesProvider, useCharacter, useRules } from '../state/AppState';
 import type { Character } from '../types/character';
 
@@ -29,7 +30,8 @@ function HistoryView() {
   if (!character.levels.length) return <Navigate to={`/c/${character.id}/build/class`} replace />;
 
   const steps = levelHistory(character, sheet, registry).reverse();
-  const onChange = (c: Character) => update(() => c);
+  // Picks here can change max HP (a Con increase, a feat); current HP moves with it.
+  const onChange = (c: Character) => update((prev) => applyBuildEdit(prev, c, registry));
 
   return (
     <div className="levelup history">
