@@ -1,0 +1,115 @@
+{
+  "_help": "Spells. 'classes' = which class spell lists include it. Damage and healing make the Cast button roll for you: 'atSlot' maps slot level -> dice (listing only the base level is fine if the higher-level text says 'increases by XdY for each slot level above N'), 'atCharLevel' is for cantrips that grow at character levels 5/11/17. In healing, MOD means + spellcasting modifier.",
+  "spells": [
+    {
+      "_help": "Damage spell with an attack roll and upcasting.",
+      "id": "ember-lance",
+      "name": "Ember Lance",
+      "level": 1,
+      "school": "Evocation",
+      "classes": [
+        "sorcerer",
+        "wizard"
+      ],
+      "castingTime": "Action",
+      "range": "120 feet",
+      "components": [
+        "V",
+        "S"
+      ],
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "attackType": "ranged",
+      "description": "Make a ranged spell attack. On a hit, the target takes 3d6 Fire damage.",
+      "higherLevel": "The damage increases by 1d6 for each spell slot level above 1.",
+      "damage": {
+        "type": "fire",
+        "atSlot": {
+          "1": "3d6"
+        }
+      }
+    },
+    {
+      "_help": "Cantrip with a saving throw; damage by character level.",
+      "id": "frost-snap",
+      "name": "Frost Snap",
+      "level": 0,
+      "school": "Evocation",
+      "classes": [
+        "druid",
+        "wizard"
+      ],
+      "castingTime": "Action",
+      "range": "60 feet",
+      "components": [
+        "V",
+        "S"
+      ],
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "save": "con",
+      "description": "A creature makes a Constitution saving throw or takes 1d8 Cold damage and its Speed drops by 10 feet until your next turn.",
+      "damage": {
+        "type": "cold",
+        "atCharLevel": {
+          "1": "1d8",
+          "5": "2d8",
+          "11": "3d8",
+          "17": "4d8"
+        }
+      }
+    },
+    {
+      "_help": "Healing spell (every slot level written out).",
+      "id": "mending-light",
+      "name": "Mending Light",
+      "level": 1,
+      "school": "Abjuration",
+      "classes": [
+        "cleric",
+        "paladin"
+      ],
+      "castingTime": "Bonus Action",
+      "range": "30 feet",
+      "components": [
+        "V"
+      ],
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "A creature you can see regains Hit Points equal to 1d6 plus your spellcasting ability modifier.",
+      "heal": {
+        "atSlot": {
+          "1": "1d6 + MOD",
+          "2": "2d6 + MOD",
+          "3": "3d6 + MOD"
+        }
+      }
+    },
+    {
+      "_help": "Concentration spell with a material component and no dice: casting it starts tracking concentration.",
+      "id": "warding-chime",
+      "name": "Warding Chime",
+      "level": 2,
+      "school": "Abjuration",
+      "classes": [
+        "bard",
+        "cleric"
+      ],
+      "castingTime": "Action",
+      "range": "Self",
+      "components": [
+        "V",
+        "S",
+        "M"
+      ],
+      "material": "a small silver bell",
+      "duration": "Concentration, up to 1 minute",
+      "concentration": true,
+      "ritual": true,
+      "description": "A soft chime surrounds you. Allies within 10 feet have Advantage on saving throws against the Frightened condition."
+    }
+  ]
+}

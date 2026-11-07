@@ -1,0 +1,120 @@
+{
+  "_help": "Items. 'category' is weapon, armor, gear, tool, magic or other. Weapons need 'weapon' stats; armor needs 'armor' stats ('dexMax': null = full Dex, 0 = no Dex, 2 = up to +2). Magic items use category 'magic' and a 'magic' block; a weapon or armor with its own stats can also have a 'magic' block. 'magic.effects' lists what the item grants while equipped (and attuned, if required), using the same effect types as feats.",
+  "items": [
+    {
+      "id": "hooked-spear",
+      "name": "Hooked Spear",
+      "category": "weapon",
+      "cost": "8 gp",
+      "weight": 4,
+      "weapon": {
+        "category": "martial",
+        "kind": "melee",
+        "damage": "1d8",
+        "damageType": "piercing",
+        "properties": [
+          "reach",
+          "two-handed"
+        ],
+        "mastery": "topple"
+      }
+    },
+    {
+      "id": "boiled-hide",
+      "name": "Boiled Hide Armor",
+      "category": "armor",
+      "cost": "20 gp",
+      "weight": 15,
+      "armor": {
+        "type": "medium",
+        "base": 13,
+        "dexMax": 2,
+        "stealthDisadvantage": false
+      }
+    },
+    {
+      "_help": "Magic weapon variant: when added in the inventory, the app asks which weapon it enchants. 'bonus' adds to attack/damage rolls.",
+      "id": "hearth-blade",
+      "name": "Hearth Blade +1",
+      "category": "magic",
+      "description": "This weapon glows like embers. You have a +1 bonus to attack and damage rolls made with it.",
+      "magic": {
+        "rarity": "Uncommon",
+        "attunement": false,
+        "variantOf": "weapon",
+        "bonus": {
+          "attack": 1,
+          "damage": 1
+        }
+      }
+    },
+    {
+      "_help": "Worn magic item: works once equipped (and attuned if 'attunement' is true). 'bonus.ac' / 'bonus.save' add to AC and all saves; 'abilitySet' sets a score to at least that value; 'charges' adds a charge tracker.",
+      "id": "amulet-of-the-oak",
+      "name": "Amulet of the Oak",
+      "category": "magic",
+      "description": "While wearing this amulet your Constitution score is 17, and you gain a +1 bonus to saving throws. It has 3 charges; spend one to cast Barkskin. It regains its charges at dawn.",
+      "magic": {
+        "rarity": "Rare",
+        "attunement": true,
+        "bonus": {
+          "save": 1
+        },
+        "abilitySet": {
+          "ability": "con",
+          "value": 17
+        },
+        "charges": 3
+      }
+    },
+    {
+      "_help": "A weapon with its own stats that is also magic: the 'magic.bonus' attack and damage apply to it directly. No need to pick a base weapon.",
+      "id": "emberbrand",
+      "name": "Emberbrand",
+      "category": "weapon",
+      "description": "A longsword whose blade is etched with runes of fire. You have a +1 bonus to attack and damage rolls made with it.",
+      "weapon": {
+        "category": "martial",
+        "kind": "melee",
+        "damage": "1d8",
+        "damageType": "slashing",
+        "versatile": "1d10",
+        "properties": [
+          "versatile"
+        ],
+        "mastery": "sap"
+      },
+      "magic": {
+        "rarity": "Rare",
+        "attunement": true,
+        "bonus": {
+          "attack": 1,
+          "damage": 1
+        }
+      }
+    },
+    {
+      "_help": "Worn magic item that grants effects: here cold resistance and a spell it can cast. The spell shows on the sheet with the item's name and the 'note'. Other effect types work too: speedBonus, speedMode, darkvision, skill, save, language, abilityBonus, hpBonus, initiativeBonus.",
+      "id": "frostfire-pendant",
+      "name": "Frostfire Pendant",
+      "category": "magic",
+      "description": "While wearing this pendant you have Resistance to Cold damage. It has 2 charges; spend one to cast Ice Knife. It regains its charges at dawn.",
+      "magic": {
+        "rarity": "Uncommon",
+        "attunement": false,
+        "charges": 2,
+        "effects": [
+          {
+            "type": "resistance",
+            "damage": "cold"
+          },
+          {
+            "type": "spell",
+            "spell": "ice-knife",
+            "note": "1 charge"
+          }
+        ]
+      }
+    }
+  ]
+}

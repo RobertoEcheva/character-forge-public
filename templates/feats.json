@@ -1,0 +1,143 @@
+{
+  "_help": "Feats. Import this file on the Custom content page (Import file). Keys starting with _help are notes for you and are ignored on import. 'type' is origin, general, fighting-style or epic-boon.",
+  "feats": [
+    {
+      "_help": "SIMPLEST FEAT: just text. Everything except id, name, type, description and repeatable is optional.",
+      "id": "lucky-break",
+      "name": "Lucky Break",
+      "type": "origin",
+      "repeatable": false,
+      "description": "Once per Long Rest, when you fail a saving throw, you can reroll it and must use the new roll."
+    },
+    {
+      "_help": "FEAT THAT GIVES SPELLS. A 'spell' effect means you always have that spell prepared. 'ability' is the spellcasting ability (str, dex, con, int, wis, cha). Use the spell's id (its name in lowercase with dashes: 'Misty Step' -> 'misty-step'). 'note' is shown next to the spell. A 'spell' choice lets the player pick spells from class lists.",
+      "id": "wayfinder-adept",
+      "name": "Wayfinder Adept",
+      "type": "general",
+      "repeatable": false,
+      "prerequisite": {
+        "minLevel": 4
+      },
+      "description": "You gain the following benefits.\n**Ability Score Increase.** Increase your Intelligence or Wisdom score by 1, to a maximum of 20.\n**Path Magic.** You always have the Misty Step spell prepared and can cast it once without a spell slot per Long Rest.\n**Hedge Trick.** You learn one cantrip of your choice from the Druid or Wizard spell list.",
+      "effects": [
+        {
+          "type": "spell",
+          "spell": "misty-step",
+          "ability": "wis",
+          "note": "1/Long Rest free"
+        },
+        {
+          "type": "resource",
+          "id": "wayfinder-misty-step",
+          "label": "Wayfinder: free Misty Step",
+          "max": 1,
+          "reset": "long"
+        }
+      ],
+      "choices": [
+        {
+          "_help": "+1 to one of the listed abilities (points = how many +1s).",
+          "kind": "asi",
+          "id": "asi",
+          "label": "Ability Score Increase (+1)",
+          "points": 1,
+          "from": [
+            "int",
+            "wis"
+          ],
+          "maxPerAbility": 1,
+          "max": 20
+        },
+        {
+          "_help": "level 0 = cantrip. lists = class spell lists to choose from.",
+          "kind": "spell",
+          "id": "cantrip",
+          "label": "One Druid or Wizard cantrip",
+          "count": 1,
+          "level": 0,
+          "lists": [
+            "druid",
+            "wizard"
+          ],
+          "ability": "wis"
+        }
+      ]
+    },
+    {
+      "_help": "FEAT WITH SKILL PICKS AND A FLAT BONUS. 'expertise': true picks among skills the character is already proficient in. Other handy effects: initiativeBonus, speedBonus, darkvision, resistance, hpPerLevel, acBonus.",
+      "id": "street-scholar",
+      "name": "Street Scholar",
+      "type": "general",
+      "repeatable": false,
+      "prerequisite": {
+        "minLevel": 4,
+        "text": "Intelligence 13 or higher"
+      },
+      "description": "You gain proficiency in two skills of your choice, Expertise in one skill you're proficient in, and a +2 bonus to Initiative.",
+      "effects": [
+        {
+          "type": "initiativeBonus",
+          "value": 2
+        }
+      ],
+      "choices": [
+        {
+          "kind": "skill",
+          "id": "skills",
+          "label": "Two skills",
+          "count": 2,
+          "from": "any"
+        },
+        {
+          "kind": "skill",
+          "id": "expertise",
+          "label": "Expertise in one skill",
+          "count": 1,
+          "from": "any",
+          "expertise": true
+        }
+      ]
+    },
+    {
+      "_help": "FEAT WITH AN ON/OFF STATE AND EXTRA DAMAGE. A 'toggle' shows a switch under Active effects; its effects only apply while it is on. 'resource' (optional) spends a use when switched on. A 'damageRider' adds a checkbox for extra damage on the sheet's attacks.",
+      "id": "battle-trance",
+      "name": "Battle Trance",
+      "type": "general",
+      "repeatable": false,
+      "prerequisite": {
+        "minLevel": 4
+      },
+      "description": "As a Bonus Action you can enter a trance for 1 minute: you gain a +1 bonus to AC and your weapon hits can deal an extra 1d4 damage. You can do this a number of times equal to your Proficiency Bonus per Long Rest.",
+      "effects": [
+        {
+          "type": "resource",
+          "id": "battle-trance",
+          "label": "Battle Trance",
+          "max": "pb",
+          "reset": "long"
+        },
+        {
+          "type": "toggle",
+          "id": "battle-trance",
+          "label": "Battle Trance",
+          "resource": "battle-trance",
+          "description": "+1 AC; weapon hits can deal an extra 1d4 damage.",
+          "effects": [
+            {
+              "type": "acBonus",
+              "value": 1
+            },
+            {
+              "type": "damageRider",
+              "id": "battle-trance",
+              "label": "Battle Trance",
+              "dice": "1d4",
+              "when": "any",
+              "auto": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

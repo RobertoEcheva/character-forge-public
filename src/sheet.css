@@ -1,0 +1,287 @@
+.sheet { padding-bottom: 120px; }
+.sheet-head { display: flex; justify-content: space-between; gap: var(--sp-4); align-items: flex-end; flex-wrap: wrap; margin-bottom: var(--sp-5); }
+.sheet-head h1 { font: 400 clamp(2.441rem, 6vw, var(--fs-4xl))/1 var(--font-display); letter-spacing: -0.01em; }
+.sheet-head__sub { color: var(--ink-2); font-size: var(--fs-m); margin: var(--sp-1) 0 0; }
+/* Play actions (rests) first, then a gap, then managing the character. */
+.sheet-head__actions { gap: var(--sp-2) var(--sp-5); }
+.sheet-head__actions > .row { gap: var(--sp-2); }
+.sheet-alert {
+  display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  border: 1px solid var(--rule); border-left: 4px solid var(--or); background: var(--surface); padding: var(--sp-2) var(--sp-4); margin-bottom: var(--sp-4);
+}
+.sheet-alert.is-done { border-left-color: var(--ok); }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-m); padding: var(--sp-4); margin-bottom: var(--sp-5); }
+
+.sheet-grid { display: grid; grid-template-columns: minmax(250px, 0.85fr) minmax(0, 1.3fr) minmax(0, 1fr); gap: 0 var(--sp-6); align-items: start; }
+.col { min-width: 0; }
+/* Each block carries a tincture band on its left edge: the colour says what kind of block it is. */
+.block { --band: var(--ink); padding: var(--sp-1) 0 var(--sp-1) var(--sp-4); margin-bottom: var(--sp-6); border-left: 4px solid var(--band); }
+.block--attacks { --band: var(--gules); }
+.block--spells { --band: var(--purpure); }
+.block--resources { --band: var(--or); }
+.block--effects { --band: var(--azure); }
+.block h2 { font-size: var(--fs-xl); margin-bottom: var(--sp-3); }
+.block h3 { font: 700 var(--fs-m) var(--font-body); margin: var(--sp-4) 0 var(--sp-1); color: var(--ink); }
+.block__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-3); }
+.block__head h2 { margin: 0; }
+.block__head > :not(h2) { flex: none; }
+
+/* roll buttons: look like text, act like buttons */
+.roll {
+  background: none; border: 1px solid transparent; padding: 0 0.2em; font: inherit; color: inherit;
+  border-radius: var(--radius-s);
+}
+.roll:hover { border-color: var(--rule); background: var(--surface-2); }
+
+/* abilities — heraldic shields, the sheet's centrepiece */
+.abilities { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 6px; }
+.ability { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.ability__name { font: 700 var(--fs-s) var(--font-body); color: var(--ink-2); margin-bottom: 2px; }
+.ability__mod.roll { font: 400 var(--fs-3xl)/1 var(--font-num); padding: 0 0.15em; color: var(--ink); }
+.ability__mod.roll:hover { background: transparent; border-color: transparent; color: var(--accent); }
+.ability__score {
+  position: relative; z-index: 1; margin-top: -16px;
+  display: grid; place-items: center; min-width: 34px; height: 34px; padding: 0 6px; border-radius: 999px;
+  font: 700 1rem var(--font-body); color: var(--on-tincture); background: var(--ink);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.ability__save.roll { font-size: var(--fs-s); color: var(--ink-2); margin-top: 4px; }
+.ability__save.is-prof { color: var(--accent); font-weight: 700; }
+.ability__save.is-prof::before { content: '◆'; font-size: 0.65em; margin-right: 0.35em; vertical-align: middle; color: var(--accent); }
+
+
+.skills { list-style: none; margin: 0; padding: 0; columns: 1; }
+.skills li { display: flex; align-items: center; gap: 6px; }
+.skill-roll.roll { display: grid; grid-template-columns: 1fr auto 2.6em; gap: 6px; width: 100%; text-align: left; padding: 2px 4px; align-items: baseline; }
+.skill-roll strong { text-align: right; }
+.prof-dot { width: 9px; height: 9px; transform: rotate(45deg); border: 1.5px solid var(--ink-3); flex: none; margin: 0 2px; }
+.prof-dot.prof { background: var(--accent); border-color: var(--accent); }
+.prof-dot.exp { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--accent); }
+
+.kv { margin: 0; display: grid; gap: var(--sp-1); font-size: var(--fs-s); }
+.kv div { display: grid; grid-template-columns: 6.5em 1fr; gap: var(--sp-2); }
+.kv dt { color: var(--ink-3); }
+.kv dd { margin: 0; }
+
+/* passive scores under Skills */
+.passives { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4); margin: 0 0 var(--sp-2); }
+.passives { align-items: baseline; }
+.passives div { display: flex; align-items: baseline; gap: var(--sp-1); color: var(--ink-2); font-size: var(--fs-s); }
+.passives dd { margin: 0; font: 400 var(--fs-l) var(--font-num); }
+
+/* combat */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); margin-bottom: var(--sp-3); }
+.stat { display: flex; flex-direction: column; align-items: flex-start; padding: var(--sp-1) var(--sp-3); border-left: 1px solid var(--rule); }
+.stat:first-child { border-left: none; padding-left: 0; }
+.stat__label { font: 700 var(--fs-s) var(--font-body); color: var(--ink-2); }
+.stat__value, .stat__value.roll { font: 400 var(--fs-3xl)/1.1 var(--font-num); padding: 0; }
+.stat__value--word { font-size: var(--fs-xl); }
+.stat__note { font-size: var(--fs-xs); color: var(--ink-3); }
+
+.hp { padding: var(--sp-3) var(--sp-4); background: var(--surface); border: 1px solid var(--rule); border-top: 4px solid var(--vert); border-radius: var(--radius-s); }
+.hp.is-low { border-top-color: var(--gules); }
+.hp__top { display: flex; justify-content: space-between; align-items: baseline; }
+.hp__label { font: 400 var(--fs-l) var(--font-display); color: var(--ink); }
+.hp__value { font-family: var(--font-num); font-size: var(--fs-xl); }
+.hp__value strong { font-size: var(--fs-3xl); color: var(--ink); }
+.hp.is-low .hp__value strong { color: var(--danger); }
+.hp__temp { font-family: var(--font-body); font-size: var(--fs-s); color: var(--accent); }
+.hp__bar { height: 10px; background: var(--surface-2); overflow: hidden; margin: var(--sp-2) 0 var(--sp-3); }
+.hp__bar span { display: block; height: 100%; background: var(--vert); transition: width 0.25s ease; }
+.hp.is-low .hp__bar span { background: var(--gules); }
+.hp__controls input { width: 5em; }
+.hp p { margin: 0.6em 0 0; }
+
+.death, .hitdice, .conditions { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; margin-top: var(--sp-4); }
+.conditions { align-items: flex-start; flex-direction: column; }
+.cond { display: inline-flex; align-items: center; gap: 4px; padding: 0.15em 0.55em 0.15em 0.35em; border: 1px solid var(--rule); border-radius: var(--radius-s); font-size: var(--fs-s); }
+.cond.on { background: var(--danger-soft); border-color: var(--danger); }
+.cond label { color: var(--ink); font-size: inherit; }
+.cond select { padding: 0 0.2em; font-size: var(--fs-s); }
+
+/* Death saves: marks start empty and fill in as saves are made. */
+.death__title { font-weight: 700; }
+.marks { display: inline-flex; align-items: center; gap: 4px; }
+.marks__label { font-size: var(--fs-s); color: var(--ink-2); margin-right: 2px; }
+.mark {
+  width: 1.6rem; height: 1.6rem; padding: 0; justify-content: center;
+  font-weight: 700; line-height: 1; background: transparent; border: 1.5px solid var(--ink-3);
+}
+.marks--successes .mark.on { background: var(--ok); border-color: var(--ok); color: var(--surface); }
+.marks--failures .mark.on { background: var(--danger); border-color: var(--danger); color: var(--surface); }
+.death__status { font-weight: 700; }
+.death[data-state='dead'] .death__status { color: var(--danger); }
+.death[data-state='stable'] .death__status { color: var(--ok); }
+
+.pips { display: inline-flex; gap: 6px; flex-wrap: wrap; padding: 3px; }
+/* Spell slots and resources: or lozenges, filled = available, hollow = spent. */
+.pip {
+  width: 14px; height: 14px; padding: 0; border-radius: 0; transform: rotate(45deg);
+  border: 2px solid var(--or-ink); background: var(--or);
+}
+.pip:hover:not(:disabled) { border-color: var(--ink); }
+.pip.used { background: transparent; border-color: var(--ink-3); }
+.pip.danger { border-color: var(--danger); background: transparent; }
+.pip.danger.used { background: var(--danger); }
+
+.attacks { width: 100%; border-collapse: collapse; font-size: var(--fs-s); }
+.attacks th { text-align: left; font-weight: 500; font-size: var(--fs-xs); color: var(--ink-3); border-bottom: 1px solid var(--rule); padding: 0 0.4em 0.3em 0; }
+.attacks td { padding: 0.45em 0.4em 0.45em 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.attacks .roll { font-weight: 700; }
+.attacks__dmg { white-space: nowrap; }
+.warn { color: var(--danger); }
+
+.casting { margin: 0 0 0.4em; }
+.slots { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0.6rem 0; }
+.slot { display: flex; flex-direction: column; gap: 3px; }
+.spell-group ul { list-style: none; padding: 0; margin: 0; columns: 2 12em; column-gap: 1.2rem; }
+.spell-group li { break-inside: avoid; padding: 1px 0; }
+
+.resource { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; padding: 4px 0; flex-wrap: wrap; }
+.feature-group:first-of-type h3:first-child { margin-top: 0; }
+.chosen-option { margin-top: 0.4em; padding-left: 0.6em; border-left: 2px solid var(--rule); font-size: var(--fs-s); }
+.chosen-option .rt { display: inline; }
+
+.inventory { list-style: none; margin: 0 0 0.6rem; padding: 0; }
+.inventory li { display: grid; grid-template-columns: 1.3em 1fr 4em auto; gap: 6px; align-items: center; padding: 2px 0; border-bottom: 1px solid var(--rule); }
+.inv-qty { width: 4em; padding: 0.1em 0.3em; }
+.coins { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 0.8rem; }
+.coins label { display: flex; flex-direction: column; font-size: var(--fs-xs); gap: 2px; }
+.coin-label { display: inline-flex; align-items: center; gap: 4px; }
+.coins input { width: 100%; padding: 0.15em 0.3em; }
+
+/* dice dock */
+.dice {
+  position: fixed; right: 16px; bottom: 16px; z-index: 40; width: min(320px, calc(100vw - 32px));
+  background: var(--surface); border-radius: var(--radius-s); padding: 10px 12px;
+  box-shadow: var(--frame);
+}
+.dice__title { display: flex; align-items: center; gap: 0.4rem; font: 400 var(--fs-l) var(--font-display); color: var(--ink); margin-bottom: 6px; }
+.d20-icon { color: var(--accent); }
+.dice__modes { display: flex; gap: 4px; margin-bottom: 8px; }
+.dice__modes button { flex: 1; justify-content: center; }
+.dice__modes button.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+.dice__last { display: flex; gap: 12px; align-items: center; width: 100%; background: none; border: none; text-align: left; padding: 2px; }
+.dice__total { font: 400 var(--fs-4xl)/1 var(--font-num); min-width: 1.6em; text-align: center; animation: land 0.35s ease-out; }
+.dice__total.crit { color: var(--sable); background: var(--or); padding: 0 0.15em; }
+.dice__total.fumble { color: var(--danger); }
+.dice__desc { display: flex; flex-direction: column; min-width: 0; }
+.dice__hint { margin: 0; }
+.dice__history { margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 8px; max-height: 40vh; overflow: auto; }
+.dice__history input { flex: 1; min-width: 0; }
+.dice__history ol { list-style: none; padding: 0; margin: 8px 0 0; font-size: var(--fs-s); display: grid; gap: 3px; }
+@keyframes land { from { transform: translateY(-6px) scale(1.15); opacity: 0.3; } to { transform: none; opacity: 1; } }
+
+@media (max-width: 1100px) {
+  .sheet-grid { grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr); }
+  .sheet-grid .col:last-child { grid-column: 1 / -1; columns: 2 320px; column-gap: 28px; }
+  .sheet-grid .col:last-child .block { break-inside: avoid; }
+}
+@media (max-width: 720px) {
+  .sheet-grid { grid-template-columns: 1fr; }
+  .sheet-grid .col:last-child { columns: 1; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: none; padding-left: 0; }
+  .dice { left: 8px; right: 8px; bottom: 8px; width: auto; padding: 6px 8px; }
+  .dice__title, .dice__hint { display: none; }
+  .dice__modes { margin-bottom: 4px; }
+}
+/* active effects */
+.toggles { display: flex; flex-wrap: wrap; gap: 6px; margin: 0.3rem 0 0.6rem; }
+.toggle { display: inline-flex; align-items: center; gap: 5px; padding: 0.2em 0.65em 0.2em 0.4em; border: 1px solid var(--rule); border-radius: var(--radius-s); font-size: var(--fs-s); color: var(--ink); cursor: pointer; }
+.toggle.on { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); font-weight: 700; }
+.active-desc { margin: 0.3rem 0; padding-left: 0.6em; border-left: 2px solid var(--accent); }
+.active-desc .rt { display: inline; }
+.concentration { margin-top: 0.5rem; padding: 0.4rem 0.6rem; background: var(--surface); border-radius: var(--radius-s); box-shadow: 0 0 0 1px var(--rule); }
+.concentration input { width: 8em; }
+.senses { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4); margin: 0 0 var(--sp-3); color: var(--ink-2); }
+
+/* attacks */
+.damage-options { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; margin-top: 0.6rem; padding: 0.5rem 0.6rem; background: var(--surface); border-radius: var(--radius-s); box-shadow: 0 0 0 1px var(--rule); }
+.damage-options select { font-size: var(--fs-s); padding: 0.1em 0.3em; }
+
+/* spells: the menu (casting stats, slots, change spells) sits apart from the spell rows */
+.spell-menu { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-s); padding: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-3); }
+.spell-menu .slots { margin-bottom: 0; }
+.spell-group h3 { display: flex; align-items: baseline; gap: var(--sp-2); }
+.spell-group ul.spell-rows { columns: 1; border-top: 1px solid var(--rule); }
+.spell-rows > li { border-bottom: 1px solid var(--rule); }
+.spell-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0; }
+.spell-row:hover { background: var(--magic-soft); }
+.spell-row .icon--school { flex: none; }
+.spell-row > .kw { flex: none; }
+.spell-row > .small { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.spell-row .cast-btn { margin-left: auto; padding: 0.1em 0.6em; font-size: var(--fs-xs); flex: none; }
+.spell-row .cast-btn[aria-expanded='true'] { background: var(--purpure); border-color: var(--purpure); color: var(--on-tincture); }
+.cast-panel { margin: 0.2rem 0 0.6rem; padding: 0.5rem 0.7rem; background: var(--magic-soft); border-left: 4px solid var(--purpure); border-radius: var(--radius-s); }
+.cast-panel p { margin: 0.4rem 0; }
+
+/* inventory */
+.inventory li.is-magic .inv-name { color: var(--accent); }
+.inv-magic { display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; align-items: center; color: var(--ink-3); }
+.inv-magic label { font-size: inherit; gap: 3px; }
+.base-pick { margin: 0.4rem 0; }
+
+/* companions */
+.statblock { padding: 0.6rem 0.8rem; margin: 0.4rem 0; background: var(--surface); border: 1px solid var(--rule); border-top: 4px solid var(--ink); border-radius: var(--radius-s); }
+.statblock__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; }
+.statblock__name { font: 400 var(--fs-l) var(--font-display); color: var(--ink); background: none; border: none; padding: 0; }
+input.statblock__name { border-bottom: 1px dashed var(--rule); border-radius: 0; width: 12em; }
+.statblock__stats, .statblock__abilities { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; margin: 0.3rem 0; }
+.statblock__abilities { color: var(--ink-2); }
+.statblock__action { margin: 0.25rem 0; }
+.statblock__action .rt { color: var(--ink-2); }
+.wildshape { margin-bottom: 0.8rem; }
+.companion { margin-bottom: 0.4rem; }
+
+/* export menu: PDF or JSON */
+.export-menu { position: relative; }
+.export-menu__list {
+  position: absolute; right: 0; top: calc(100% + 4px); z-index: 30; width: 17rem;
+  display: flex; flex-direction: column; padding: var(--sp-1);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-s);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.18);
+}
+.export-menu__list button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; border-color: transparent; background: none; }
+.export-menu__list button:hover:not(:disabled) { background: var(--surface-2); }
+.export-menu__error { color: var(--danger); margin: var(--sp-1) var(--sp-2); }
+
+/* Ctrl+P prints the page without app chrome; the PDF export is the real printout. */
+@media print {
+  html, body { background: #fff !important; }
+  .topbar, .sheet-head__actions, aside.dice { display: none !important; }
+}
+
+/* attacks: to-hit and damage as two clear buttons per weapon */
+.atk-btn { font-weight: 700; padding: 0.25em 0.6em; white-space: nowrap; }
+.atk-btn__verb { font-weight: 400; color: var(--ink-2); }
+.atk-btn--hit { border-color: var(--azure); color: var(--azure); }
+.atk-btn--hit:hover:not(:disabled) { background: var(--azure); color: var(--on-tincture); border-color: var(--azure); }
+.atk-btn--dmg { border-color: color-mix(in srgb, var(--gules) 60%, var(--rule)); color: var(--gules); }
+.atk-btn--dmg:hover:not(:disabled) { background: var(--gules); color: var(--on-tincture); border-color: var(--gules); }
+.atk-btn:hover .atk-btn__verb { color: inherit; }
+.atk-btn--dmg.is-crit { background: var(--or); border-color: var(--or-ink); color: var(--sable); }
+.atk-btn--dmg.is-crit .atk-btn__verb { color: var(--sable); }
+.crit-banner {
+  display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; align-items: center;
+  margin: 0 0 var(--sp-3); padding: 0.45rem 0.75rem; background: var(--or); color: var(--sable); border-radius: var(--radius-s);
+}
+.crit-banner .btn-quiet { color: var(--sable); margin-left: auto; }
+
+/* hit points: heal reads as vert, like damage reads as gules */
+.btn-heal { color: var(--ok); border-color: color-mix(in srgb, var(--vert) 45%, var(--rule)); }
+.btn-heal:hover:not(:disabled) { background: var(--vert); border-color: var(--vert); color: var(--on-tincture); }
+.hp__label--small { font: 700 var(--fs-s) var(--font-body); }
+.hp--compact { padding: var(--sp-2) var(--sp-3); margin: 0.4rem 0; border-top-width: 3px; }
+.hp--compact .hp__value { font-size: var(--fs-l); }
+.hp--compact .hp__value strong { font-size: var(--fs-xl); }
+.hp--compact .hp__bar { height: 6px; margin: var(--sp-1) 0 var(--sp-2); }
+/* Phone: each attack stacks (name, then to-hit and damage, then range) instead of a wide table. */
+@media (max-width: 720px) {
+  .attacks thead { display: none; }
+  .attacks, .attacks tbody { display: block; }
+  .attacks tr { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; padding: 8px 0; border-bottom: 1px solid var(--rule); align-items: center; }
+  .attacks td { border: 0; padding: 0; }
+  .attacks td:first-child, .attacks td:last-child { grid-column: 1 / -1; }
+  .attacks__dmg { white-space: normal; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+}

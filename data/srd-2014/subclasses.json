@@ -1,0 +1,1233 @@
+[
+ {
+  "id": "berserker",
+  "name": "Berserker",
+  "source": "srd",
+  "classId": "barbarian",
+  "summary": "Primal Path",
+  "description": "For some barbarians, rage is a means to an end--that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker's rage, you thrill in the chaos of battle, heedless of your own health or well-being.",
+  "features": [
+   {
+    "id": "frenzy",
+    "name": "Frenzy",
+    "level": 3,
+    "description": "Starting when you choose this path at 3rd level, you can go into a frenzy when you rage. If you do so, for the duration of your rage you can make a single melee weapon attack as a bonus action on each of your turns after this one. When your rage ends, you suffer one level of exhaustion (as described in appendix A)."
+   },
+   {
+    "id": "mindless-rage",
+    "name": "Mindless Rage",
+    "level": 6,
+    "description": "Beginning at 6th level, you can't be charmed or frightened while raging. If you are charmed or frightened when you enter your rage, the effect is suspended for the duration of the rage."
+   },
+   {
+    "id": "intimidating-presence",
+    "name": "Intimidating Presence",
+    "level": 10,
+    "description": "Beginning at 10th level, you can use your action to frighten someone with your menacing presence. When you do so, choose one creature that you can see within 30 feet of you. If the creature can see or hear you, it must succeed on a Wisdom saving throw (DC equal to 8 + your proficiency bonus + your Charisma modifier) or be frightened of you until the end of your next turn. On subsequent turns, you can use your action to extend the duration of this effect on the frightened creature until the end of your next turn. This effect ends if the creature ends its turn out of line of sight or more than 60 feet away from you.\nIf the creature succeeds on its saving throw, you can't use this feature on that creature again for 24 hours."
+   },
+   {
+    "id": "retaliation",
+    "name": "Retaliation",
+    "level": 14,
+    "description": "Starting at 14th level, when you take damage from a creature that is within 5 feet of you, you can use your reaction to make a melee weapon Attack against that creature."
+   }
+  ]
+ },
+ {
+  "id": "lore",
+  "name": "Lore",
+  "source": "srd",
+  "classId": "bard",
+  "summary": "Bard College",
+  "description": "Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king. The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic. The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.",
+  "features": [
+   {
+    "id": "bonus-proficiencies",
+    "name": "Bonus Proficiencies",
+    "level": 3,
+    "description": "When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice.",
+    "choices": [
+     {
+      "kind": "skill",
+      "id": "skills",
+      "label": "Bonus Proficiencies: three skills",
+      "count": 3,
+      "from": "any"
+     }
+    ]
+   },
+   {
+    "id": "cutting-words",
+    "name": "Cutting Words",
+    "level": 3,
+    "description": "Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others.\nWhen a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll.\nYou can choose to use this feature after the creature makes its roll, but before the GM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed."
+   },
+   {
+    "id": "additional-magical-secrets",
+    "name": "Additional Magical Secrets",
+    "level": 6,
+    "description": "At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don't count against the number of bard spells you know."
+   },
+   {
+    "id": "peerless-skill",
+    "name": "Peerless Skill",
+    "level": 14,
+    "description": "Starting at 14th level, when you make an ability check, you can expend one use of Bardic Inspiration. Roll a Bardic Inspiration die and add the number rolled to your ability check. You can choose to do so after you roll the die for the ability check, but before the GM tells you whether you succeed or fail."
+   }
+  ]
+ },
+ {
+  "id": "life",
+  "name": "Life",
+  "source": "srd",
+  "classId": "cleric",
+  "summary": "Divine Domain",
+  "description": "The Life domain focuses on the vibrant positive energy--one of the fundamental forces of the universe--that sustains all life. The gods of life promote vitality and health through healing the sick and wounded, caring for those in need, and driving away the forces of death and undeath. Almost any non-evil deity can claim influence over this domain, particularly agricultural deities, sun gods, gods of healing or endurance, and gods of home and community.",
+  "features": [
+   {
+    "id": "life-spells",
+    "name": "Life Spells",
+    "level": 1,
+    "description": "You always have these spells prepared once you reach the listed class level: Bless, Cure Wounds, Lesser Restoration, Spiritual Weapon, Beacon of Hope, Revivify, Death Ward, Mass Cure Wounds, Raise Dead.",
+    "effects": [
+     {
+      "type": "spell",
+      "spell": "bless",
+      "minLevel": 1
+     },
+     {
+      "type": "spell",
+      "spell": "cure-wounds",
+      "minLevel": 1
+     },
+     {
+      "type": "spell",
+      "spell": "lesser-restoration",
+      "minLevel": 3
+     },
+     {
+      "type": "spell",
+      "spell": "spiritual-weapon",
+      "minLevel": 3
+     },
+     {
+      "type": "spell",
+      "spell": "beacon-of-hope",
+      "minLevel": 5
+     },
+     {
+      "type": "spell",
+      "spell": "revivify",
+      "minLevel": 5
+     },
+     {
+      "type": "spell",
+      "spell": "death-ward",
+      "minLevel": 7
+     },
+     {
+      "type": "spell",
+      "spell": "mass-cure-wounds",
+      "minLevel": 9
+     },
+     {
+      "type": "spell",
+      "spell": "raise-dead",
+      "minLevel": 9
+     }
+    ]
+   },
+   {
+    "id": "bonus-proficiency",
+    "name": "Bonus Proficiency",
+    "level": 1,
+    "description": "When you choose this domain at 1st level, you gain proficiency with heavy armor.",
+    "effects": [
+     {
+      "type": "armor",
+      "armor": "heavy"
+     }
+    ]
+   },
+   {
+    "id": "disciple-of-life",
+    "name": "Disciple of Life",
+    "level": 1,
+    "description": "Also starting at 1st level, your healing spells are more effective. Whenever you use a spell of 1st level or higher to restore hit points to a creature, the creature regains additional hit points equal to 2 + the spell's level."
+   },
+   {
+    "id": "channel-divinity-preserve-life",
+    "name": "Channel Divinity: Preserve Life",
+    "level": 2,
+    "description": "Starting at 2nd level, you can use your Channel Divinity to heal the badly injured.\nAs an action, you present your holy symbol and evoke healing energy that can restore a number of hit points equal to five times your cleric level.\nChoose any creatures within 30 feet of you, and divide those hit points among them. This feature can restore a creature to no more than half of its hit point maximum. You can't use this feature on an undead or a construct."
+   },
+   {
+    "id": "blessed-healer",
+    "name": "Blessed Healer",
+    "level": 6,
+    "description": "Beginning at 6th level, the healing spells you cast on others heal you as well. When you cast a spell of 1st level or higher that restores hit points to a creature other than you, you regain hit points equal to 2 + the spell's level."
+   },
+   {
+    "id": "divine-strike",
+    "name": "Divine Strike",
+    "level": 8,
+    "description": "At 8th level, you gain the ability to infuse your weapon strikes with divine energy. Once on each of your turns when you hit a creature with a weapon attack, you can cause the attack to deal an extra 1d8 radiant damage to the target. When you reach 14th level, the extra damage increases to 2d8."
+   }
+  ]
+ },
+ {
+  "id": "land",
+  "name": "Land",
+  "source": "srd",
+  "classId": "druid",
+  "summary": "Druid Circle",
+  "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+  "features": [
+   {
+    "id": "circle-of-the-land",
+    "name": "Circle of the Land",
+    "level": 2,
+    "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Circle of the Land",
+      "count": 1,
+      "options": [
+       {
+        "id": "circle-of-the-land-arctic",
+        "name": "Arctic",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "hold-person",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "spike-growth",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "sleet-storm",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "slow",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "freedom-of-movement",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "ice-storm",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "commune-with-nature",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "cone-of-cold",
+          "minLevel": 9
+         }
+        ]
+       },
+       {
+        "id": "circle-of-the-land-coast",
+        "name": "Coast",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "mirror-image",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "misty-step",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "water-breathing",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "water-walk",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "control-water",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "freedom-of-movement",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "conjure-elemental",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "scrying",
+          "minLevel": 9
+         }
+        ]
+       },
+       {
+        "id": "circle-of-the-land-desert",
+        "name": "Desert",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "blur",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "silence",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "create-food-and-water",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "protection-from-energy",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "blight",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "hallucinatory-terrain",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "insect-plague",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "wall-of-stone",
+          "minLevel": 9
+         }
+        ]
+       },
+       {
+        "id": "circle-of-the-land-forest",
+        "name": "Forest",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "barkskin",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "spider-climb",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "call-lightning",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "plant-growth",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "divination",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "freedom-of-movement",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "commune-with-nature",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "tree-stride",
+          "minLevel": 9
+         }
+        ]
+       },
+       {
+        "id": "circle-of-the-land-grassland",
+        "name": "Grassland",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "invisibility",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "pass-without-trace",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "daylight",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "haste",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "divination",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "freedom-of-movement",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "dream",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "insect-plague",
+          "minLevel": 9
+         }
+        ]
+       },
+       {
+        "id": "circle-of-the-land-mountain",
+        "name": "Mountain",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "spider-climb",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "spike-growth",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "lightning-bolt",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "meld-into-stone",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "stone-shape",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "stoneskin",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "passwall",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "wall-of-stone",
+          "minLevel": 9
+         }
+        ]
+       },
+       {
+        "id": "circle-of-the-land-swamp",
+        "name": "Swamp",
+        "description": "The Circle of the Land is made up of mystics and sages who safeguard ancient knowledge and rites through a vast oral tradition. These druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of communities that hold to the Old Faith and serve as advisors to the rulers of those folk. As a member of this circle, your magic is influenced by the land where you were initiated into the circle's mysterious rites.",
+        "effects": [
+         {
+          "type": "spell",
+          "spell": "acid-arrow",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "darkness",
+          "minLevel": 3
+         },
+         {
+          "type": "spell",
+          "spell": "water-walk",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "stinking-cloud",
+          "minLevel": 5
+         },
+         {
+          "type": "spell",
+          "spell": "freedom-of-movement",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "locate-creature",
+          "minLevel": 7
+         },
+         {
+          "type": "spell",
+          "spell": "insect-plague",
+          "minLevel": 9
+         },
+         {
+          "type": "spell",
+          "spell": "scrying",
+          "minLevel": 9
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "bonus-cantrip",
+    "name": "Bonus Cantrip",
+    "level": 2,
+    "description": "When you choose this circle at 2nd level, you learn one additional druid cantrip of your choice."
+   },
+   {
+    "id": "natural-recovery",
+    "name": "Natural Recovery",
+    "level": 2,
+    "description": "Starting at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can't use this feature again until you finish a long rest.\nFor example, when you are a 4th-level druid, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level slot or two 1st-level slots."
+   },
+   {
+    "id": "circle-spells-1",
+    "name": "Circle Spells",
+    "level": 3,
+    "description": "Your mystical connection to the land infuses you with the ability to cast certain spells. At 3rd, 5th, 7th, and 9th level you gain access to circle spells connected to the land where you became a druid.\nChoose that land--arctic, coast, desert, forest, grassland, mountain, or swamp--and consult the associated list of spells.\nOnce you gain access to a circle spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+    "hidden": true
+   },
+   {
+    "id": "circle-spells-2",
+    "name": "Circle Spells",
+    "level": 5,
+    "description": "Your mystical connection to the land infuses you with the ability to cast certain spells. At 3rd, 5th, 7th, and 9th level you gain access to circle spells connected to the land where you became a druid.\nChoose that land--arctic, coast, desert, forest, grassland, mountain, or swamp--and consult the associated list of spells.\nOnce you gain access to a circle spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+    "hidden": true
+   },
+   {
+    "id": "druid-lands-stride",
+    "name": "Land's Stride",
+    "level": 6,
+    "description": "Starting at 6th level, moving through nonmagical difficult terrain costs you no extra movement. You can also pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard.\nIn addition, you have advantage on saving throws against plants that are magically created or manipulated to impede movement, such those created by the entangle spell."
+   },
+   {
+    "id": "circle-spells-3",
+    "name": "Circle Spells",
+    "level": 7,
+    "description": "Your mystical connection to the land infuses you with the ability to cast certain spells. At 3rd, 5th, 7th, and 9th level you gain access to circle spells connected to the land where you became a druid.\nChoose that land--arctic, coast, desert, forest, grassland, mountain, or swamp--and consult the associated list of spells.\nOnce you gain access to a circle spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+    "hidden": true
+   },
+   {
+    "id": "circle-spells-4",
+    "name": "Circle Spells",
+    "level": 9,
+    "description": "Your mystical connection to the land infuses you with the ability to cast certain spells. At 3rd, 5th, 7th, and 9th level you gain access to circle spells connected to the land where you became a druid.\nChoose that land--arctic, coast, desert, forest, grassland, mountain, or swamp--and consult the associated list of spells.\nOnce you gain access to a circle spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+    "hidden": true
+   },
+   {
+    "id": "natures-ward",
+    "name": "Nature's Ward",
+    "level": 10,
+    "description": "When you reach 10th level, you can't be charmed or frightened by elementals or fey, and you are immune to poison and disease."
+   },
+   {
+    "id": "natures-sanctuary",
+    "name": "Nature's Sanctuary",
+    "level": 14,
+    "description": "When you reach 14th level, creatures of the natural world sense your connection to nature and become hesitant to attack you. When a beast or plant creature attacks you, that creature must make a Wisdom saving throw against your druid spell save DC. On a failed save, the creature must choose a different target, or the attack automatically misses. On a successful save, the creature is immune to this effect for 24 hours. The creature is aware of this effect before it makes its attack against you."
+   }
+  ]
+ },
+ {
+  "id": "champion",
+  "name": "Champion",
+  "source": "srd",
+  "classId": "fighter",
+  "summary": "Martial Archetype",
+  "description": "The archetypal Champion focuses on the development of raw physical power honed to deadly perfection. Those who model themselves on this archetype combine rigorous training with physical excellence to deal devastating blows.",
+  "features": [
+   {
+    "id": "improved-critical",
+    "name": "Improved Critical",
+    "level": 3,
+    "description": "Beginning when you choose this archetype at 3rd level, your weapon attacks score a critical hit on a roll of 19 or 20."
+   },
+   {
+    "id": "remarkable-athlete",
+    "name": "Remarkable Athlete",
+    "level": 7,
+    "description": "Starting at 7th level, you can add half your proficiency bonus (round up) to any Strength, Dexterity, or Constitution check you make that doesn't already use your proficiency bonus. In addition, when you make a running long jump, the distance you can cover increases by a number of feet equal to your Strength modifier."
+   },
+   {
+    "id": "additional-fighting-style",
+    "name": "Additional Fighting Style",
+    "level": 10,
+    "description": "At 10th level, you can choose a second option from the Fighting Style class feature.",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Additional Fighting Style",
+      "count": 1,
+      "options": [
+       {
+        "id": "fighter-fighting-style-archery",
+        "name": "Archery",
+        "description": "You gain a +2 bonus to attack rolls you make with ranged weapons.",
+        "effects": [
+         {
+          "type": "rangedAttackBonus",
+          "value": 2
+         }
+        ]
+       },
+       {
+        "id": "fighter-fighting-style-defense",
+        "name": "Defense",
+        "description": "While you are wearing armor, you gain a +1 bonus to AC.",
+        "effects": [
+         {
+          "type": "acBonus",
+          "value": 1,
+          "whileArmored": true
+         }
+        ]
+       },
+       {
+        "id": "fighter-fighting-style-dueling",
+        "name": "Dueling",
+        "description": "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon."
+       },
+       {
+        "id": "fighter-fighting-style-great-weapon-fighting",
+        "name": "Great Weapon Fighting",
+        "description": "When you roll a 1 or 2 on a damage die for an attack you make with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must have the two-handed or versatile property for you to gain this benefit."
+       },
+       {
+        "id": "fighter-fighting-style-protection",
+        "name": "Protection",
+        "description": "When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
+       },
+       {
+        "id": "fighter-fighting-style-two-weapon-fighting",
+        "name": "Two-Weapon Fighting",
+        "description": "When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "superior-critical",
+    "name": "Superior Critical",
+    "level": 15,
+    "description": "Starting at 15th level, your weapon attacks score a critical hit on a roll of 18-20."
+   },
+   {
+    "id": "survivor",
+    "name": "Survivor",
+    "level": 18,
+    "description": "At 18th level, you attain the pinnacle of resilience in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don't gain this benefit if you have 0 hit points."
+   }
+  ]
+ },
+ {
+  "id": "open-hand",
+  "name": "Open Hand",
+  "source": "srd",
+  "classId": "monk",
+  "summary": "Monastic Tradition",
+  "description": "Monks of the Way of the Open Hand are the ultimate masters of martial arts combat, whether armed or unarmed. They learn techniques to push and trip their opponents, manipulate ki to heal damage to their bodies, and practice advanced meditation that can protect them from harm.",
+  "features": [
+   {
+    "id": "open-hand-technique",
+    "name": "Open Hand Technique",
+    "level": 3,
+    "description": "Starting when you choose this tradition at 3rd level, you can manipulate your enemy's ki when you harness your own. Whenever you hit a creature with one of the attacks granted by your Flurry of Blows, you can impose one of the following effects on that target:\n- It must succeed on a Dexterity saving throw or be knocked prone.\n- It must make a Strength saving throw. If it fails, you can push it up to 15 feet away from you.\n- It can't take reactions until the end of your next turn."
+   },
+   {
+    "id": "wholeness-of-body",
+    "name": "Wholeness of Body",
+    "level": 6,
+    "description": "At 6th level, you gain the ability to heal yourself. As an action, you can regain hit points equal to three times your monk level. You must finish a long rest before you can use this feature again."
+   },
+   {
+    "id": "tranquility",
+    "name": "Tranquility",
+    "level": 11,
+    "description": "Beginning at 11th level, you can enter a special meditation that surrounds you with an aura of peace. At the end of a long rest, you gain the effect of a sanctuary spell that lasts until the start of your next long rest (the spell can end early as normal). The saving throw DC for the spell equals 8 + your Wisdom modifier + your proficiency bonus."
+   },
+   {
+    "id": "quivering-palm",
+    "name": "Quivering Palm",
+    "level": 17,
+    "description": "At 17th level, you gain the ability to set up lethal vibrations in someone's body. When you hit a creature with an unarmed strike, you can spend 3 ki points to start these imperceptible vibrations, which last for a number of days equal to your monk level. The vibrations are harmless unless you use your action to end them. To do so, you and the target must be on the same plane of existence. When you use this action, the creature must make a Constitution saving throw. If it fails, it is reduced to 0 hit points. If it succeeds, it takes 10d10 necrotic damage.\nYou can have only one creature under the effect of this feature at a time. You can choose to end the vibrations harmlessly without using an action."
+   }
+  ]
+ },
+ {
+  "id": "devotion",
+  "name": "Devotion",
+  "source": "srd",
+  "classId": "paladin",
+  "summary": "Sacred Oath",
+  "description": "The Oath of Devotion binds a paladin to the loftiest ideals of justice, virtue, and order. Sometimes called cavaliers, white knights, or holy warriors, these paladins meet the ideal of the knight in shining armor, acting with honor in pursuit of justice and the greater good. They hold themselves to the highest standards of conduct, and some, for better or worse, hold the rest of the world to the same standards. Many who swear this oath are devoted to gods of law and good and use their gods' tenets as the measure of their devotion. They hold angels--the perfect servants of good--as their ideals, and incorporate images of angelic wings into their helmets or coats of arms.",
+  "features": [
+   {
+    "id": "devotion-spells",
+    "name": "Devotion Spells",
+    "level": 3,
+    "description": "You always have these spells prepared once you reach the listed class level: Protection from Evil and Good, Sanctuary, Lesser Restoration, Zone of Truth, Beacon of Hope, Dispel Magic, Freedom of Movement, Guardian of Faith, Commune, Flame Strike.",
+    "effects": [
+     {
+      "type": "spell",
+      "spell": "protection-from-evil-and-good",
+      "minLevel": 3
+     },
+     {
+      "type": "spell",
+      "spell": "sanctuary",
+      "minLevel": 3
+     },
+     {
+      "type": "spell",
+      "spell": "lesser-restoration",
+      "minLevel": 5
+     },
+     {
+      "type": "spell",
+      "spell": "zone-of-truth",
+      "minLevel": 5
+     },
+     {
+      "type": "spell",
+      "spell": "beacon-of-hope",
+      "minLevel": 9
+     },
+     {
+      "type": "spell",
+      "spell": "dispel-magic",
+      "minLevel": 9
+     },
+     {
+      "type": "spell",
+      "spell": "freedom-of-movement",
+      "minLevel": 13
+     },
+     {
+      "type": "spell",
+      "spell": "guardian-of-faith",
+      "minLevel": 13
+     },
+     {
+      "type": "spell",
+      "spell": "commune",
+      "minLevel": 17
+     },
+     {
+      "type": "spell",
+      "spell": "flame-strike",
+      "minLevel": 17
+     }
+    ]
+   },
+   {
+    "id": "channel-divinity-sacred-weapon",
+    "name": "Channel Divinity: Sacred Weapon",
+    "level": 3,
+    "description": "As an action, you can imbue one weapon that you are holding with positive energy, using your Channel Divinity. For 1 minute, you add your Charisma modifier to attack rolls made with that weapon (with a minimum bonus of +1). The weapon also emits bright light in a 20-foot radius and dim light 20 feet beyond that. If the weapon is not already magical, it becomes magical for the duration.\nYou can end this effect on your turn as part of any other action. If you are no longer holding or carrying this weapon, or if you fall unconscious, this effect ends."
+   },
+   {
+    "id": "channel-divinity-turn-the-unholy",
+    "name": "Channel Divinity: Turn the Unholy",
+    "level": 3,
+    "description": "As an action, you present your holy symbol and speak a prayer censuring fiends and undead, using your Channel Divinity. Each fiend or undead that can see or hear you within 30 feet of you must make a Wisdom saving throw. If the creature fails its saving throw, it is turned for 1 minute or until it takes damage.\nA turned creature must spend its turns trying to move as far away from you as it can, and it can't willingly move to a space within 30 feet of you. It also can't take reactions. For its action, it can use only the Dash action or try to escape from an effect that prevents it from moving. If there's nowhere to move, the creature can use the Dodge action."
+   },
+   {
+    "id": "aura-of-devotion",
+    "name": "Aura of Devotion",
+    "level": 7,
+    "description": "Starting at 7th level, you and friendly creatures within 10 feet of you can't be charmed while you are conscious.\nAt 18th level, the range of this aura increases to 30 feet."
+   },
+   {
+    "id": "purity-of-spirit",
+    "name": "Purity of Spirit",
+    "level": 15,
+    "description": "Beginning at 15th level, you are always under the effects of a protection from evil and good spell."
+   },
+   {
+    "id": "holy-nimbus",
+    "name": "Holy Nimbus",
+    "level": 20,
+    "description": "At 20th level, as an action, you can emanate an aura of sunlight. For 1 minute, bright light shines from you in a 30-foot radius, and dim light shines 30 feet beyond that.\nWhenever an enemy creature starts its turn in the bright light, the creature takes 10 radiant damage.\nIn addition, for the duration, you have advantage on saving throws against spells cast by fiends or undead."
+   }
+  ]
+ },
+ {
+  "id": "hunter",
+  "name": "Hunter",
+  "source": "srd",
+  "classId": "ranger",
+  "summary": "Ranger Archetype",
+  "description": "Emulating the Hunter archetype means accepting your place as a bulwark between civilization and the terrors of the wilderness. As you walk the Hunter's path, you learn specialized techniques for fighting the threats you face, from rampaging ogres and hordes of orcs to towering giants and terrifying dragons.",
+  "features": [
+   {
+    "id": "hunters-prey",
+    "name": "Hunter's Prey",
+    "level": 3,
+    "description": "At 3rd level, you gain one of the following features of your choice.\nColossus Slayer\nGiant Killer\nHorde Breaker",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Hunter's Prey",
+      "count": 1,
+      "options": [
+       {
+        "id": "hunters-prey-colossus-slayer",
+        "name": "Colossus Slayer",
+        "description": "Your tenacity can wear down the most potent foes. When you hit a creature with a weapon attack, the creature takes an extra 1d8 damage if it's below its hit point maximum. You can deal this extra damage only once per turn."
+       },
+       {
+        "id": "hunters-prey-giant-killer",
+        "name": "Giant Killer",
+        "description": "When a Large or larger creature within 5 feet of you hits or misses you with an attack, you can use your reaction to attack that creature immediately after its attack, provided that you can see the creature."
+       },
+       {
+        "id": "hunters-prey-horde-breaker",
+        "name": "Horde Breaker",
+        "description": "Once on each of your turns when you make a weapon attack, you can make another attack with the same weapon against a different creature that is within 5 feet of the original target and within range of your weapon."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "defensive-tactics",
+    "name": "Defensive Tactics",
+    "level": 7,
+    "description": "At 7th level, you gain one of the following features of your choice.\nEscape the Horde\nMultiattack Defense\nSteel Will",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Defensive Tactics",
+      "count": 1,
+      "options": [
+       {
+        "id": "defensive-tactics-escape-the-horde",
+        "name": "Escape the Horde",
+        "description": "Opportunity attacks against you are made with disadvantage."
+       },
+       {
+        "id": "defensive-tactics-multiattack-defense",
+        "name": "Multiattack Defense",
+        "description": "When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn."
+       },
+       {
+        "id": "defensive-tactics-steel-will",
+        "name": "Steel Will",
+        "description": "You have advantage on saving throws against being frightened."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "multiattack",
+    "name": "Multiattack",
+    "level": 11,
+    "description": "At 11th level, you gain one of the following features of your choice.\nVolley\nWhirlwind Attack",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Multiattack",
+      "count": 1,
+      "options": [
+       {
+        "id": "multiattack-volley",
+        "name": "Volley",
+        "description": "You can use your action to make a ranged attack against any number of creatures within 10 feet of a point you can see within your weapon's range. You must have ammunition for each target, as normal, and you make a separate attack roll for each target."
+       },
+       {
+        "id": "multiattack-whirlwind-attack",
+        "name": "Whirlwind Attack",
+        "description": "You can use your action to make a melee attack against any number of creatures within 5 feet of you, with a separate attack roll for each target."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "superior-hunters-defense",
+    "name": "Superior Hunter's Defense",
+    "level": 15,
+    "description": "At 15th level, you gain one of the following features of your choice.\nEvasion\nStand Against the Tide\nUncanny Dodge",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Superior Hunter's Defense",
+      "count": 1,
+      "options": [
+       {
+        "id": "superior-hunters-defense-evasion",
+        "name": "Evasion",
+        "description": "When you are subjected to an effect, such as a red dragon's fiery breath or a lightning bolt spell, that allows you to make a Dexterity saving throw to take only half damage, you instead take no damage if you succeed on the saving throw, and only half damage if you fail."
+       },
+       {
+        "id": "superior-hunters-defense-stand-against-the-tide",
+        "name": "Stand Against the Tide",
+        "description": "When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice."
+       },
+       {
+        "id": "superior-hunters-defense-uncanny-dodge",
+        "name": "Uncanny Dodge",
+        "description": "When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you."
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "thief",
+  "name": "Thief",
+  "source": "srd",
+  "classId": "rogue",
+  "summary": "Roguish Archetype",
+  "description": "You hone your skills in the larcenous arts. Burglars, bandits, cutpurses, and other criminals typically follow this archetype, but so do rogues who prefer to think of themselves as professional treasure seekers, explorers, delvers, and investigators. In addition to improving your agility and stealth, you learn skills useful for delving into ancient ruins, reading unfamiliar languages, and using magic items you normally couldn't employ.",
+  "features": [
+   {
+    "id": "fast-hands",
+    "name": "Fast Hands",
+    "level": 3,
+    "description": "Starting at 3rd level, you can use the bonus action granted by your Cunning Action to make a Dexterity (Sleight of Hand) check, use your thieves' tools to disarm a trap or open a lock, or take the Use an Object action."
+   },
+   {
+    "id": "second-story-work",
+    "name": "Second-Story Work",
+    "level": 3,
+    "description": "When you choose this archetype at 3rd level, you gain the ability to climb faster than normal; climbing no longer costs you extra movement.\nIn addition, when you make a running jump, the distance you cover increases by a number of feet equal to your Dexterity modifier."
+   },
+   {
+    "id": "supreme-sneak",
+    "name": "Supreme Sneak",
+    "level": 9,
+    "description": "Starting at 9th level, you have advantage on a Dexterity (Stealth) check if you move no more than half your speed on the same turn."
+   },
+   {
+    "id": "use-magic-device",
+    "name": "Use Magic Device",
+    "level": 13,
+    "description": "By 13th level, you have learned enough about the workings of magic that you can improvise the use of items even when they are not intended for you. You ignore all class, race, and level requirements on the use of magic items."
+   },
+   {
+    "id": "thiefs-reflexes",
+    "name": "Thief's Reflexes",
+    "level": 17,
+    "description": "When you reach 17th level, you have become adept at laying ambushes and quickly escaping danger. You can take two turns during the first round of any combat. You take your first turn at your normal initiative and your second turn at your initiative minus 10. You can't use this feature when you are surprised."
+   }
+  ]
+ },
+ {
+  "id": "draconic",
+  "name": "Draconic",
+  "source": "srd",
+  "classId": "sorcerer",
+  "summary": "Sorcerous Origin",
+  "description": "Your innate magic comes from draconic magic that was mingled with your blood or that of your ancestors. Most often, sorcerers with this origin trace their descent back to a mighty sorcerer of ancient times who made a bargain with a dragon or who might even have claimed a dragon parent. Some of these bloodlines are well established in the world, but most are obscure. Any given sorcerer could be the first of a new bloodline, as a result of a pact or some other exceptional circumstance.",
+  "features": [
+   {
+    "id": "dragon-ancestor",
+    "name": "Dragon Ancestor",
+    "level": 1,
+    "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check.",
+    "choices": [
+     {
+      "kind": "option",
+      "id": "options",
+      "label": "Dragon Ancestor",
+      "count": 1,
+      "options": [
+       {
+        "id": "dragon-ancestor-black---acid-damage",
+        "name": "Black - Acid Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-blue---lightning-damage",
+        "name": "Blue - Lightning Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-brass---fire-damage",
+        "name": "Brass - Fire Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-bronze---lightning-damage",
+        "name": "Bronze - Lightning Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-copper---acid-damage",
+        "name": "Copper - Acid Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-gold---fire-damage",
+        "name": "Gold - Fire Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-green---poison-damage",
+        "name": "Green - Poison Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-red---fire-damage",
+        "name": "Red - Fire Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-silver---cold-damage",
+        "name": "Silver - Cold Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       },
+       {
+        "id": "dragon-ancestor-white---cold-damage",
+        "name": "White - Cold Damage",
+        "description": "At 1st level, you choose one type of dragon as your ancestor. The damage type associated with each dragon is used by features you gain later.\nYou can speak, read, and write Draconic. Additionally, whenever you make a Charisma check when interacting with dragons, your proficiency bonus is doubled if it applies to the check."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "draconic-resilience",
+    "name": "Draconic Resilience",
+    "level": 1,
+    "description": "As magic flows through your body, it causes physical traits of your dragon ancestors to emerge. At 1st level, your hit point maximum increases by 1 and increases by 1 again whenever you gain a level in this class.\nAdditionally, parts of your skin are covered by a thin sheen of dragon-like scales. When you aren't wearing armor, your AC equals 13 + your Dexterity modifier.",
+    "effects": [
+     {
+      "type": "hpPerLevel",
+      "value": 1,
+      "classId": "sorcerer"
+     },
+     {
+      "type": "acFormula",
+      "name": "Draconic Resilience",
+      "base": 13,
+      "abilities": [
+       "dex"
+      ],
+      "allowShield": true
+     }
+    ]
+   },
+   {
+    "id": "elemental-affinity",
+    "name": "Elemental Affinity",
+    "level": 6,
+    "description": "Starting at 6th level, when you cast a spell that deals damage of the type associated with your draconic ancestry, you can add your Charisma modifier to one damage roll of that spell. At the same time, you can spend 1 sorcery point to gain resistance to that damage type for 1 hour."
+   },
+   {
+    "id": "dragon-wings",
+    "name": "Dragon Wings",
+    "level": 14,
+    "description": "At 14th level, you gain the ability to sprout a pair of dragon wings from your back, gaining a flying speed equal to your current speed. You can create these wings as a bonus action on your turn. They last until you dismiss them as a bonus action on your turn.\nYou can't manifest your wings while wearing armor unless the armor is made to accommodate them, and clothing not made to accommodate your wings might be destroyed when you manifest them."
+   },
+   {
+    "id": "draconic-presence",
+    "name": "Draconic Presence",
+    "level": 18,
+    "description": "Beginning at 18th level, you can channel the dread presence of your dragon ancestor, causing those around you to become awestruck or frightened. As an action, you can spend 5 sorcery points to draw on this power and exude an aura of awe or fear (your choice) to a distance of 60 feet. For 1 minute or until you lose your concentration (as if you were casting a concentration spell), each hostile creature that starts its turn in this aura must succeed on a Wisdom saving throw or be charmed (if you chose awe) or frightened (if you chose fear) until the aura ends. A creature that succeeds on this saving throw is immune to your aura for 24 hours."
+   }
+  ]
+ },
+ {
+  "id": "fiend",
+  "name": "Fiend",
+  "source": "srd",
+  "classId": "warlock",
+  "summary": "Otherworldly Patron",
+  "description": "You have made a pact with a fiend from the lower planes of existence, a being whose aims are evil, even if you strive against those aims. Such beings desire the corruption or destruction of all things, ultimately including you. Fiends powerful enough to forge a pact include demon lords such as Demogorgon, Orcus, Fraz'Urb-luu, and Baphomet; archdevils such as Asmodeus, Dispater, Mephistopheles, and Belial; pit fiends and balors that are especially mighty; and ultroloths and other lords of the yugoloths.",
+  "features": [
+   {
+    "id": "fiend-spells",
+    "name": "Fiend Spells",
+    "level": 1,
+    "description": "You always have these spells prepared once you reach the listed class level: Burning Hands, Command, Blindness/Deafness, Scorching Ray, Fireball, Stinking Cloud, Fire Shield, Wall of Fire, Flame Strike, Hallow.",
+    "effects": [
+     {
+      "type": "spell",
+      "spell": "burning-hands",
+      "minLevel": 1
+     },
+     {
+      "type": "spell",
+      "spell": "command",
+      "minLevel": 1
+     },
+     {
+      "type": "spell",
+      "spell": "blindness-deafness",
+      "minLevel": 3
+     },
+     {
+      "type": "spell",
+      "spell": "scorching-ray",
+      "minLevel": 3
+     },
+     {
+      "type": "spell",
+      "spell": "fireball",
+      "minLevel": 5
+     },
+     {
+      "type": "spell",
+      "spell": "stinking-cloud",
+      "minLevel": 5
+     },
+     {
+      "type": "spell",
+      "spell": "fire-shield",
+      "minLevel": 7
+     },
+     {
+      "type": "spell",
+      "spell": "wall-of-fire",
+      "minLevel": 7
+     },
+     {
+      "type": "spell",
+      "spell": "flame-strike",
+      "minLevel": 9
+     },
+     {
+      "type": "spell",
+      "spell": "hallow",
+      "minLevel": 9
+     }
+    ]
+   },
+   {
+    "id": "dark-ones-blessing",
+    "name": "Dark One's Blessing",
+    "level": 1,
+    "description": "Starting at 1st level, when you reduce a hostile creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level (minimum of 1)."
+   },
+   {
+    "id": "dark-ones-own-luck",
+    "name": "Dark One's Own Luck",
+    "level": 6,
+    "description": "Starting at 6th level, you can call on your patron to alter fate in your favor. When you make an ability check or a saving throw, you can use this feature to add a d10 to your roll. You can do so after seeing the initial roll but before any of the roll's effects occur.\nOnce you use this feature, you can't use it again until you finish a short or long rest."
+   },
+   {
+    "id": "fiendish-resilience",
+    "name": "Fiendish Resilience",
+    "level": 10,
+    "description": "Starting at 10th level, you can choose one damage type when you finish a short or long rest. You gain resistance to that damage type until you choose a different one with this feature. Damage from magical weapons or silver weapons ignores this resistance."
+   },
+   {
+    "id": "hurl-through-hell",
+    "name": "Hurl Through Hell",
+    "level": 14,
+    "description": "Starting at 14th level, when you hit a creature with an attack, you can use this feature to instantly transport the target through the lower planes. The creature disappears and hurtles through a nightmare landscape.\nAt the end of your next turn, the target returns to the space it previously occupied, or the nearest unoccupied space. If the target is not a fiend, it takes 10d10 psychic damage as it reels from its horrific experience.\nOnce you use this feature, you can't use it again until you finish a long rest."
+   }
+  ]
+ },
+ {
+  "id": "evocation",
+  "name": "Evocation",
+  "source": "srd",
+  "classId": "wizard",
+  "summary": "Arcane Tradition",
+  "description": "You focus your study on magic that creates powerful elemental effects such as bitter cold, searing flame, rolling thunder, crackling lightning, and burning acid. Some evokers find employment in military forces, serving as artillery to blast enemy armies from afar. Others use their spectacular power to protect the weak, while some seek their own gain as bandits, adventurers, or aspiring tyrants.",
+  "features": [
+   {
+    "id": "evocation-savant",
+    "name": "Evocation Savant",
+    "level": 2,
+    "description": "Beginning when you select this school at 2nd level, the gold and time you must spend to copy an evocation spell into your spellbook is halved."
+   },
+   {
+    "id": "sculpt-spells",
+    "name": "Sculpt Spells",
+    "level": 2,
+    "description": "Beginning at 2nd level, you can create pockets of relative safety within the effects of your evocation spells. When you cast an evocation spell that affects other creatures that you can see, you can choose a number of them equal to 1 + the spell's level. The chosen creatures automatically succeed on their saving throws against the spell, and they take no damage if they would normally take half damage on a successful save."
+   },
+   {
+    "id": "potent-cantrip",
+    "name": "Potent Cantrip",
+    "level": 6,
+    "description": "Starting at 6th level, your damaging cantrips affect even creatures that avoid the brunt of the effect. When a creature succeeds on a saving throw against your cantrip, the creature takes half the cantrip's damage (if any) but suffers no additional effect from the cantrip."
+   },
+   {
+    "id": "empowered-evocation",
+    "name": "Empowered Evocation",
+    "level": 10,
+    "description": "Beginning at 10th level, you can add your Intelligence modifier to one damage roll of any wizard evocation spell you cast."
+   },
+   {
+    "id": "overchannel",
+    "name": "Overchannel",
+    "level": 14,
+    "description": "Starting at 14th level, you can increase the power of your simpler spells. When you cast a wizard spell of 1st through 5th level that deals damage, you can deal maximum damage with that spell.\nThe first time you do so, you suffer no adverse effect. If you use this feature again before you finish a long rest, you take 2d12 necrotic damage for each level of the spell, immediately after you cast it. Each time you use this feature again before finishing a long rest, the necrotic damage per spell level increases by 1d12. This damage ignores resistance and immunity."
+   }
+  ]
+ }
+]

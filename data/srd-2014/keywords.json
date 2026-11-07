@@ -1,0 +1,515 @@
+[
+ {
+  "id": "blinded",
+  "term": "Blinded",
+  "kind": "condition",
+  "description": "- A blinded creature can't see and automatically fails any ability check that requires sight.\n- Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.",
+  "source": "srd"
+ },
+ {
+  "id": "charmed",
+  "term": "Charmed",
+  "kind": "condition",
+  "description": "- A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects.\n- The charmer has advantage on any ability check to interact socially with the creature.",
+  "source": "srd"
+ },
+ {
+  "id": "deafened",
+  "term": "Deafened",
+  "kind": "condition",
+  "description": "- A deafened creature can't hear and automatically fails any ability check that requires hearing.",
+  "source": "srd"
+ },
+ {
+  "id": "frightened",
+  "term": "Frightened",
+  "kind": "condition",
+  "description": "- A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.\n- The creature can't willingly move closer to the source of its fear.",
+  "source": "srd"
+ },
+ {
+  "id": "grappled",
+  "term": "Grappled",
+  "kind": "condition",
+  "description": "- A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.\n- The condition ends if the grappler is incapacitated (see the condition).\n- The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the thunderwave spell.",
+  "source": "srd"
+ },
+ {
+  "id": "incapacitated",
+  "term": "Incapacitated",
+  "kind": "condition",
+  "description": "- An incapacitated creature can't take actions or reactions.",
+  "source": "srd"
+ },
+ {
+  "id": "invisible",
+  "term": "Invisible",
+  "kind": "condition",
+  "description": "- An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature's location can be detected by any noise it makes or any tracks it leaves.\n- Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.",
+  "source": "srd"
+ },
+ {
+  "id": "paralyzed",
+  "term": "Paralyzed",
+  "kind": "condition",
+  "description": "- A paralyzed creature is incapacitated (see the condition) and can't move or speak.\n- The creature automatically fails Strength and Dexterity saving throws.\n- Attack rolls against the creature have advantage.\n- Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.",
+  "source": "srd"
+ },
+ {
+  "id": "petrified",
+  "term": "Petrified",
+  "kind": "condition",
+  "description": "- A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases aging.\n- The creature is incapacitated (see the condition), can't move or speak, and is unaware of its surroundings.\n- Attack rolls against the creature have advantage.\n- The creature automatically fails Strength and Dexterity saving throws.\n- The creature has resistance to all damage.\n- The creature is immune to poison and disease, although a poison or disease already in its system is suspended, not neutralized.",
+  "source": "srd"
+ },
+ {
+  "id": "poisoned",
+  "term": "Poisoned",
+  "kind": "condition",
+  "description": "- A poisoned creature has disadvantage on attack rolls and ability checks.",
+  "source": "srd"
+ },
+ {
+  "id": "prone",
+  "term": "Prone",
+  "kind": "condition",
+  "description": "- A prone creature's only movement option is to crawl, unless it stands up and thereby ends the condition.\n- The creature has disadvantage on attack rolls.\n- An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the attack roll has disadvantage.",
+  "source": "srd"
+ },
+ {
+  "id": "restrained",
+  "term": "Restrained",
+  "kind": "condition",
+  "description": "- A restrained creature's speed becomes 0, and it can't benefit from any bonus to its speed.\n- Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.\n- The creature has disadvantage on Dexterity saving throws.",
+  "source": "srd"
+ },
+ {
+  "id": "stunned",
+  "term": "Stunned",
+  "kind": "condition",
+  "description": "- A stunned creature is incapacitated (see the condition), can't move, and can speak only falteringly.\n- The creature automatically fails Strength and Dexterity saving throws.\n- Attack rolls against the creature have advantage.",
+  "source": "srd"
+ },
+ {
+  "id": "unconscious",
+  "term": "Unconscious",
+  "kind": "condition",
+  "description": "- An unconscious creature is incapacitated (see the condition), can't move or speak, and is unaware of its surroundings.\n- The creature drops whatever it's holding and falls prone.\n- The creature automatically fails Strength and Dexterity saving throws.\n- Attack rolls against the creature have advantage.\n- Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.",
+  "source": "srd"
+ },
+ {
+  "id": "exhaustion",
+  "term": "Exhaustion",
+  "kind": "condition",
+  "description": "Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to a special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect's description.\n1 - Disadvantage on ability checks\n2 - Speed halved\n3 - Disadvantage on attack rolls and saving throws\n4 - Hit point maximum halved\n5 - Speed reduced to 0\n6 - Death\nIf an already exhausted creature suffers another effect that causes exhaustion, its current level of exhaustion increases by the amount specified in the effect's description.\nA creature suffers the effect of its current level of exhaustion as well as all lower levels. For example, a creature suffering level 2 exhaustion has its speed halved and has disadvantage on ability checks.\nAn effect that removes exhaustion reduces its level as specified in the effect's description, with all exhaustion effects ending if a creature's exhaustion level is reduced below 1.\nFinishing a long rest reduces a creature's exhaustion level by 1, provided that the creature has also ingested some food and drink.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-acid",
+  "term": "Acid damage",
+  "kind": "damage",
+  "description": "The corrosive spray of a black dragon's breath and the dissolving enzymes secreted by a black pudding deal acid damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-bludgeoning",
+  "term": "Bludgeoning damage",
+  "kind": "damage",
+  "description": "Blunt force attacks, falling, constriction, and the like deal bludgeoning damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-cold",
+  "term": "Cold damage",
+  "kind": "damage",
+  "description": "The infernal chill radiating from an ice devil's spear and the frigid blast of a white dragon's breath deal cold damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-fire",
+  "term": "Fire damage",
+  "kind": "damage",
+  "description": "Red dragons breathe fire, and many spells conjure flames to deal fire damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-force",
+  "term": "Force damage",
+  "kind": "damage",
+  "description": "Force is pure magical energy focused into a damaging form. Most effects that deal force damage are spells, including magic missile and spiritual weapon.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-lightning",
+  "term": "Lightning damage",
+  "kind": "damage",
+  "description": "A lightning bolt spell and a blue dragon's breath deal lightning damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-necrotic",
+  "term": "Necrotic damage",
+  "kind": "damage",
+  "description": "Necrotic damage, dealt by certain undead and a spell such as chill touch, withers matter and even the soul.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-piercing",
+  "term": "Piercing damage",
+  "kind": "damage",
+  "description": "Puncturing and impaling attacks, including spears and monsters' bites, deal piercing damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-poison",
+  "term": "Poison damage",
+  "kind": "damage",
+  "description": "Venomous stings and the toxic gas of a green dragon's breath deal poison damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-psychic",
+  "term": "Psychic damage",
+  "kind": "damage",
+  "description": "Mental abilities such as a psionic blast deal psychic damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-radiant",
+  "term": "Radiant damage",
+  "kind": "damage",
+  "description": "Radiant damage, dealt by a cleric's flame strike spell or an angel's smiting weapon, sears the flesh like fire and overloads the spirit with power.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-slashing",
+  "term": "Slashing damage",
+  "kind": "damage",
+  "description": "Swords, axes, and monsters' claws deal slashing damage.",
+  "source": "srd"
+ },
+ {
+  "id": "damage-thunder",
+  "term": "Thunder damage",
+  "kind": "damage",
+  "description": "A concussive burst of sound, such as the effect of the thunderwave spell, deals thunder damage.",
+  "source": "srd"
+ },
+ {
+  "id": "property-ammunition",
+  "term": "Ammunition",
+  "kind": "weapon-property",
+  "description": "You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon).\nAt the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield. If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon (see \"Improvised Weapons\" later in the section). A sling must be loaded to deal any damage when used in this way.",
+  "source": "srd"
+ },
+ {
+  "id": "property-finesse",
+  "term": "Finesse",
+  "kind": "weapon-property",
+  "description": "When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls.",
+  "source": "srd"
+ },
+ {
+  "id": "property-heavy",
+  "term": "Heavy",
+  "kind": "weapon-property",
+  "description": "Small creatures have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small creature to use effectively.",
+  "source": "srd"
+ },
+ {
+  "id": "property-light",
+  "term": "Light",
+  "kind": "weapon-property",
+  "description": "A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons.",
+  "source": "srd"
+ },
+ {
+  "id": "property-loading",
+  "term": "Loading",
+  "kind": "weapon-property",
+  "description": "Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make.",
+  "source": "srd"
+ },
+ {
+  "id": "property-reach",
+  "term": "Reach",
+  "kind": "weapon-property",
+  "description": "This weapon adds 5 feet to your reach when you attack with it, as well as when determining your reach for opportunity attacks with it.",
+  "source": "srd"
+ },
+ {
+  "id": "property-special",
+  "term": "Special",
+  "kind": "weapon-property",
+  "description": "A weapon with the special property has unusual rules governing its use, explained in the weapon's description (see \"Special Weapons\" later in this section).",
+  "source": "srd"
+ },
+ {
+  "id": "property-thrown",
+  "term": "Thrown",
+  "kind": "weapon-property",
+  "description": "If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property.",
+  "source": "srd"
+ },
+ {
+  "id": "property-two-handed",
+  "term": "Two-Handed",
+  "kind": "weapon-property",
+  "description": "This weapon requires two hands when you attack with it.",
+  "source": "srd"
+ },
+ {
+  "id": "property-versatile",
+  "term": "Versatile",
+  "kind": "weapon-property",
+  "description": "This weapon can be used with one or two hands. A damage value in parentheses appears with the property--the damage when the weapon is used with two hands to make a melee attack.",
+  "source": "srd"
+ },
+ {
+  "id": "property-monk",
+  "term": "Monk",
+  "kind": "weapon-property",
+  "description": "Monks gain several benefits while unarmed or wielding only monk weapons while they aren't wearing armor or wielding shields.",
+  "source": "srd"
+ },
+ {
+  "id": "surprise",
+  "term": "Surprise",
+  "aliases": [
+   "surprised"
+  ],
+  "kind": "rule",
+  "description": "A band of adventurers sneaks up on a bandit camp, springing from the trees to attack them. A gelatinous cube glides down a dungeon passage, unnoticed by the adventurers until the cube engulfs one of them. In these situations, one side of the battle gains surprise over the other.\n\nThe GM determines who might be surprised. If neither side tries to be stealthy, they automatically notice each other. Otherwise, the GM compares the Dexterity (Stealth) checks of anyone hiding with the passive Wisdom (Perception) score of each creature on the opposing side. Any character or monster that doesn't notice a threat is surprised at the start of the encounter.\n\nIf you're surprised, you can't move or take an action on your first turn of the combat, and you can't take a reaction until that turn ends. A member of a group can be surprised even if the other members aren't.",
+  "source": "srd"
+ },
+ {
+  "id": "bonus-action",
+  "term": "Bonus Action",
+  "aliases": [
+   "bonus action",
+   "Bonus Actions"
+  ],
+  "kind": "rule",
+  "description": "Various class features, spells, and other abilities let you take an additional action on your turn called a bonus action. The Cunning Action feature, for example, allows a rogue to take a bonus action. You can take a bonus action only when a special ability, spell, or other feature of the game states that you can do something as a bonus action. You otherwise don't have a bonus action to take.\n\nYou can take only one bonus action on your turn, so you must choose which bonus action to use when you have more than one available.\n\nYou choose when to take a bonus action during your turn, unless the bonus action's timing is specified, and anything that deprives you of your ability to take actions also prevents you from taking a bonus action.",
+  "source": "srd"
+ },
+ {
+  "id": "reaction",
+  "term": "Reaction",
+  "aliases": [
+   "reaction",
+   "Reactions"
+  ],
+  "kind": "rule",
+  "description": "Certain special abilities, spells, and situations allow you to take a special action called a reaction. A reaction is an instant response to a trigger of some kind, which can occur on your turn or on someone else's. The opportunity attack, described later in this chapter, is the most common type of reaction.\n\nWhen you take a reaction, you can't take another one until the start of your next turn. If the reaction interrupts another creature's turn, that creature can continue its turn right after the reaction.",
+  "source": "srd"
+ },
+ {
+  "id": "difficult-terrain",
+  "term": "Difficult Terrain",
+  "aliases": [
+   "difficult terrain"
+  ],
+  "kind": "rule",
+  "description": "Combat rarely takes place in bare rooms or on featureless plains. Boulder-strewn caverns, briar-choked forests, treacherous staircases-the setting of a typical fight contains difficult terrain.\n\nEvery foot of movement in difficult terrain costs 1 extra foot. This rule is true even if multiple things in a space count as difficult terrain.\n\nLow furniture, rubble, undergrowth, steep stairs, snow, and shallow bogs are examples of difficult terrain. The space of another creature, whether hostile or not, also counts as difficult terrain.",
+  "source": "srd"
+ },
+ {
+  "id": "dash",
+  "term": "Dash",
+  "aliases": [
+   "Dash action"
+  ],
+  "kind": "action",
+  "description": "When you take the Dash action, you gain extra movement for the current turn. The increase equals your speed, after applying any modifiers. With a speed of 30 feet, for example, you can move up to 60 feet on your turn if you dash.\n\nAny increase or decrease to your speed changes this additional movement by the same amount. If your speed of 30 feet is reduced to 15 feet, for instance, you can move up to 30 feet this turn if you dash.",
+  "source": "srd"
+ },
+ {
+  "id": "disengage",
+  "term": "Disengage",
+  "aliases": [
+   "Disengage action"
+  ],
+  "kind": "action",
+  "description": "If you take the Disengage action, your movement doesn't provoke opportunity attacks for the rest of the turn.",
+  "source": "srd"
+ },
+ {
+  "id": "dodge",
+  "term": "Dodge",
+  "aliases": [
+   "Dodge action"
+  ],
+  "kind": "action",
+  "description": "When you take the Dodge action, you focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage. You lose this benefit if you are incapacitated (as explained in appendix PH-A) or if your speed drops to 0.",
+  "source": "srd"
+ },
+ {
+  "id": "opportunity-attack",
+  "term": "Opportunity Attack",
+  "aliases": [
+   "opportunity attack",
+   "Opportunity Attacks"
+  ],
+  "kind": "rule",
+  "description": "In a fight, everyone is constantly watching for a chance to strike an enemy who is fleeing or passing by. Such a strike is called an opportunity attack.\n\nYou can make an opportunity attack when a hostile creature that you can see moves out of your reach. To make the opportunity attack, you use your reaction to make one melee attack against the provoking creature. The attack occurs right before the creature leaves your reach.\n\nYou can avoid provoking an opportunity attack by taking the Disengage action. You also don't provoke an opportunity attack when you teleport or when someone or something moves you without using your movement, action, or reaction. For example, you don't provoke an opportunity attack if an explosion hurls you out of a foe's reach or if gravity causes you to fall past an enemy.",
+  "source": "srd"
+ },
+ {
+  "id": "two-weapon-fighting",
+  "term": "Two-Weapon Fighting",
+  "aliases": [
+   "two-weapon fighting"
+  ],
+  "kind": "rule",
+  "description": "When you take the Attack action and attack with a light melee weapon that you're holding in one hand, you can use a bonus action to attack with a different light melee weapon that you're holding in the other hand. You don't add your ability modifier to the damage of the bonus attack, unless that modifier is negative.\n\nIf either weapon has the thrown property, you can throw the weapon, instead of making a melee attack with it.",
+  "source": "srd"
+ },
+ {
+  "id": "grappling",
+  "term": "Grappling",
+  "aliases": [
+   "grapple"
+  ],
+  "kind": "rule",
+  "description": "When you want to grab a creature or wrestle with it, you can use the Attack action to make a special melee attack, a grapple. If you're able to make multiple attacks with the Attack action, this attack replaces one of them.\n\nThe target of your grapple must be no more than one size larger than you and must be within your reach. Using at least one free hand, you try to seize the target by making a grapple check instead of an attack roll: a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you succeed, you subject the target to the grappled condition (see appendix PH-A). The condition specifies the things that end it, and you can release the target whenever you like (no action required).\n\n**Escaping a Grapple.** A grappled creature can use its action to escape. To do so, it must succeed on a Strength (Athletics) or Dexterity (Acrobatics) check contested by your Strength\n(Athletics) check.\n\n**Moving a Grappled Creature.** When you move, you can drag or carry the grappled creature with you, but your speed is halved, unless the creature is two or more sizes smaller than you.",
+  "source": "srd"
+ },
+ {
+  "id": "shove",
+  "term": "Shove",
+  "aliases": [
+   "shove"
+  ],
+  "kind": "action",
+  "description": "Using the Attack action, you can make a special melee attack to shove a creature, either to knock it prone or push it away from you. If you're able to make multiple attacks with the Attack action, this attack replaces one of them.\n\nThe target must be no more than one size larger than you and must be within your reach. Instead of making an attack roll, you make a Strength (Athletics) check contested by the target's Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or push it 5 feet away from you.",
+  "source": "srd"
+ },
+ {
+  "id": "cover",
+  "term": "Cover",
+  "aliases": [
+   "half cover",
+   "three-quarters cover",
+   "total cover"
+  ],
+  "kind": "rule",
+  "description": "Walls, trees, creatures, and other obstacles can provide cover during combat, making a target more difficult to harm. A target can benefit from cover only when an attack or other effect originates on the opposite side of the cover.\n\nThere are three degrees of cover. If a target is behind multiple sources of cover, only the most protective degree of cover applies; the degrees aren't added together. For example, if a target is behind a creature that gives half cover and a tree trunk that gives three-quarters cover, the target has three-quarters cover.\n\nA target with **half cover** has a +2 bonus to AC and Dexterity saving throws. A target has half cover if an obstacle blocks at least half of its body. The obstacle might be a low wall, a large piece of furniture, a narrow tree trunk, or a creature, whether that creature is an enemy or a friend.\n\nA target with **three-quarters cover** has a +5 bonus to AC and Dexterity saving throws. A target has three-quarters cover if about three-quarters of it is covered by an obstacle. The obstacle might be a portcullis, an arrow slit, or a thick tree trunk.\n\nA target with **total cover** can't be targeted directly by an attack or a spell, although some spells can reach such a target by including it in an area of effect. A target has total cover if it is completely concealed by an obstacle.",
+  "source": "srd"
+ },
+ {
+  "id": "critical-hit",
+  "term": "Critical Hit",
+  "aliases": [
+   "critical hit"
+  ],
+  "kind": "rule",
+  "description": "When you score a critical hit, you get to roll extra dice for the attack's damage against the target. Roll all of the attack's damage dice twice and add them together. Then add any relevant modifiers as normal. To speed up play, you can roll all the damage dice at once.\n\nFor example, if you score a critical hit with a dagger, roll 2d4 for the damage, rather than 1d4, and then add your relevant ability modifier. If the attack involves other damage dice, such as from the rogue's Sneak Attack feature, you roll those dice twice as well.",
+  "source": "srd"
+ },
+ {
+  "id": "resistance",
+  "term": "Resistance",
+  "aliases": [
+   "resistance",
+   "vulnerability",
+   "Vulnerability"
+  ],
+  "kind": "rule",
+  "description": "Some creatures and objects are exceedingly difficult or unusually easy to hurt with certain types of damage.\n\nIf a creature or an object has **resistance** to a damage type, damage of that type is halved against it. If a creature or an object has **vulnerability** to a damage type, damage of that type is doubled against it.\n\nResistance and then vulnerability are applied after all other modifiers to damage. For example, a creature has resistance to bludgeoning damage and is hit by an attack that deals 25 bludgeoning damage. The creature is also within a magical aura that reduces all damage by 5. The 25 damage is first reduced by 5 and then halved, so the creature takes 10 damage.\n\nMultiple instances of resistance or vulnerability that affect the same damage type count as only one instance. For example, if a creature has resistance to fire damage as well as resistance to all nonmagical damage, the damage of a nonmagical fire is reduced by half against the creature, not reduced by three-quarters.",
+  "source": "srd"
+ },
+ {
+  "id": "death-saving-throw",
+  "term": "Death Saving Throw",
+  "aliases": [
+   "death saving throw",
+   "death saving throws"
+  ],
+  "kind": "rule",
+  "description": "Whenever you start your turn with 0 hit points, you must make a special saving throw, called a death saving throw, to determine whether you creep closer to death or hang onto life. Unlike other saving throws, this one isn't tied to any ability score. You are in the hands of fate now, aided only by spells and features that improve your chances of succeeding on a saving throw.\n\nRoll a d20. If the roll is 10 or higher, you succeed. Otherwise, you fail. A success or failure has no effect by itself. On your third success, you become stable (see below). On your third failure, you die. The successes and failures don't need to be consecutive; keep track of both until you collect three of a kind. The number of both is reset to zero when you regain any hit points or become stable.\n\n**Rolling 1 or 20.** When you make a death saving throw and roll a 1 on the d20, it counts as two failures. If you roll a 20 on the d20, you regain 1 hit point.\n\n**Damage at 0 Hit Points.** If you take any damage while you have 0 hit points, you suffer a death saving throw failure. If the damage is from a critical hit, you suffer two failures instead. If the damage equals or exceeds your hit point maximum, you suffer instant death.",
+  "source": "srd"
+ },
+ {
+  "id": "temporary-hit-points",
+  "term": "Temporary Hit Points",
+  "aliases": [
+   "temporary hit points"
+  ],
+  "kind": "rule",
+  "description": "Some spells and special abilities confer temporary hit points to a creature. Temporary hit points aren't actual hit points; they are a buffer against damage, a pool of hit points that protect you from injury.\n\nWhen you have temporary hit points and take damage, the temporary hit points are lost first, and any leftover damage carries over to your normal hit points. For example, if you have 5 temporary hit points and take 7 damage, you lose the temporary hit points and then take 2 damage.\n\nBecause temporary hit points are separate from your actual hit points, they can exceed your hit point maximum. A character can, therefore, be at full hit points and receive temporary hit points.\n\nHealing can't restore temporary hit points, and they can't be added together. If you have temporary hit points and receive more of them, you decide whether to keep the ones you have or to gain the new ones. For example, if a spell grants you 12 temporary hit points when you already have 10, you can have 12 or 10, not 22.\n\nIf you have 0 hit points, receiving temporary hit points doesn't restore you to consciousness or stabilize you. They can still absorb damage directed at you while you're in that state, but only true healing can save you.\n\nUnless a feature that grants you temporary hit points has a duration, they last until they're depleted or you finish a long rest.",
+  "source": "srd"
+ },
+ {
+  "id": "advantage",
+  "term": "Advantage",
+  "aliases": [
+   "advantage",
+   "Disadvantage",
+   "disadvantage"
+  ],
+  "kind": "rule",
+  "description": "Sometimes a special ability or spell tells you that you have advantage or disadvantage on an ability check, a saving throw, or an attack roll. When that happens, you roll a second d20 when you make the roll. Use the higher of the two rolls if you have advantage, and use the lower roll if you have disadvantage. For example, if you have disadvantage and roll a 17 and a 5, you use the 5. If you instead have advantage and roll those numbers, you use the 17.\n\nIf multiple situations affect a roll and each one grants advantage or imposes disadvantage on it, you don't roll more than one additional d20. If two favorable situations grant advantage, for example, you still roll only one additional d20.\n\nIf circumstances cause a roll to have both advantage and disadvantage, you are considered to have neither of them, and you roll one d20. This is true even if multiple circumstances impose disadvantage and only one grants advantage or vice versa. In such a situation, you have neither advantage nor disadvantage.\n\nWhen you have advantage or disadvantage and something in the game, such as the halfling's Lucky trait, lets you reroll the d20, you can reroll only one of the dice. You choose which one. For example, if a halfling has advantage or disadvantage on an ability check and rolls a 1 and a 13, the halfling could use the Lucky trait to reroll the 1.\n\nYou usually gain advantage or disadvantage through the use of special abilities, actions, or spells. Inspiration can also give a character advantage. The\n\nGM can also decide that circumstances influence a roll in one direction or the other and grant advantage or impose disadvantage as a result.",
+  "source": "srd"
+ },
+ {
+  "id": "proficiency-bonus",
+  "term": "Proficiency Bonus",
+  "aliases": [
+   "proficiency bonus"
+  ],
+  "kind": "rule",
+  "description": "Characters have a proficiency bonus determined by level. Monsters also have this bonus, which is incorporated in their stat blocks. The bonus is used in the rules on ability checks, saving throws, and attack rolls.\n\nYour proficiency bonus can't be added to a single die roll or other number more than once. For example, if two different rules say you can add your proficiency bonus to a Wisdom saving throw, you nevertheless add the bonus only once when you make the save.\n\nOccasionally, your proficiency bonus might be multiplied or divided (doubled or halved, for example) before you apply it. For example, the rogue's Expertise feature doubles the proficiency bonus for certain ability checks. If a circumstance suggests that your proficiency bonus applies more than once to the same roll, you still add it only once and multiply or divide it only once.\n\nBy the same token, if a feature or effect allows you to multiply your proficiency bonus when making an ability check that wouldn't normally benefit from your proficiency bonus, you still don't add the bonus to the check. For that check your proficiency bonus is 0, given the fact that multiplying 0 by any number is still 0. For instance, if you lack proficiency in the History skill, you gain no benefit from a feature that lets you double your proficiency bonus when you make Intelligence (History) checks.\n\nIn general, you don't multiply your proficiency bonus for attack rolls or saving throws. If a feature or effect allows you to do so, these same rules apply.",
+  "source": "srd"
+ },
+ {
+  "id": "passive-check",
+  "term": "Passive Check",
+  "aliases": [
+   "passive Wisdom (Perception)"
+  ],
+  "kind": "rule",
+  "description": "A passive check is a special kind of ability check that doesn't involve any die rolls. Such a check can represent the average result for a task done repeatedly, such as searching for secret doors over and over again, or can be used when the GM wants to secretly determine whether the characters succeed at something without rolling dice, such as noticing a hidden monster.\n\nHere's how to determine a character's total for a passive check:\n\n10 + all modifiers that normally apply to the check\n\nIf the character has advantage on the check, add 5. For disadvantage, subtract 5. The game refers to a passive check total as a **score**.\n\nFor example, if a 1st-level character has a Wisdom of 15 and proficiency in Perception, he or she has a passive Wisdom (Perception) score of 14.\n\nThe rules on hiding in the \"Dexterity\" section below rely on passive checks, as do the exploration rules.",
+  "source": "srd"
+ },
+ {
+  "id": "short-rest",
+  "term": "Short Rest",
+  "aliases": [
+   "short rest"
+  ],
+  "kind": "rule",
+  "description": "A short rest is a period of downtime, at least 1 hour long, during which a character does nothing more strenuous than eating, drinking, reading, and tending to wounds.\n\nA character can spend one or more Hit Dice at the end of a short rest, up to the character's maximum number of Hit Dice, which is equal to the character's level. For each Hit Die spent in this way, the player rolls the die and adds the character's Constitution modifier to it. The character regains hit points equal to the total. The player can decide to spend an additional Hit Die after each roll. A character regains some spent Hit Dice upon finishing a long rest, as explained below.",
+  "source": "srd"
+ },
+ {
+  "id": "long-rest",
+  "term": "Long Rest",
+  "aliases": [
+   "long rest"
+  ],
+  "kind": "rule",
+  "description": "A long rest is a period of extended downtime, at least 8 hours long, during which a character sleeps or performs light activity: reading, talking, eating, or standing watch for no more than 2 hours. If the rest is interrupted by a period of strenuous activity-at least 1 hour of walking, fighting, casting spells, or similar adventuring activity-the characters must begin the rest again to gain any benefit from it.\n\nAt the end of a long rest, a character regains all lost hit points. The character also regains spent Hit Dice, up to a number of dice equal to half of the character's total number of them (minimum of one die). For example, if a character has eight Hit Dice, he or she can regain four spent Hit Dice upon finishing a long rest.\n\nA character can't benefit from more than one long rest in a 24-hour period, and a character must have at least 1 hit point at the start of the rest to gain its benefits.",
+  "source": "srd"
+ },
+ {
+  "id": "ritual",
+  "term": "Ritual",
+  "aliases": [
+   "ritual"
+  ],
+  "kind": "rule",
+  "description": "Certain spells have a special tag: ritual. Such a spell can be cast following the normal rules for spellcasting, or the spell can be cast as a ritual. The ritual version of a spell takes 10 minutes longer to cast than normal. It also doesn't expend a spell slot, which means the ritual version of a spell can't be cast at a higher level.\n\nTo cast a spell as a ritual, a spellcaster must have a feature that grants the ability to do so. The cleric and the druid, for example, have such a feature. The caster must also have the spell prepared or on his or her list of spells known, unless the character's ritual feature specifies otherwise, as the wizard's does.",
+  "source": "srd"
+ },
+ {
+  "id": "concentration",
+  "term": "Concentration",
+  "aliases": [
+   "concentration"
+  ],
+  "kind": "rule",
+  "description": "Some spells require you to maintain concentration in order to keep their magic active. If you lose concentration, such a spell ends.\n\nIf a spell must be maintained with concentration, that fact appears in its Duration entry, and the spell specifies how long you can concentrate on it. You can end concentration at any time (no action required).\n\nNormal activity, such as moving and attacking, doesn't interfere with concentration. The following factors can break concentration:\n- **Casting another spell that requires concentration.** You lose concentration on a spell if you cast another spell that requires concentration. You can't concentrate on two spells at once.\n- **Taking damage.** Whenever you take damage while you are concentrating on a spell, you must make a Constitution saving throw to maintain your concentration. The DC equals 10 or half the damage you take, whichever number is higher. If you take damage from multiple sources, such as an arrow and a dragon's breath, you make a separate saving throw for each source of damage.\n- **Being incapacitated or killed.** You lose concentration on a spell if you are incapacitated or if you die.\n\nThe GM might also decide that certain environmental phenomena, such as a wave crashing over you while you're on a storm-tossed ship, require you to succeed on a DC 10 Constitution saving throw to maintain concentration on a spell.",
+  "source": "srd"
+ }
+]

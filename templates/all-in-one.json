@@ -1,0 +1,44 @@
+{
+  "_help": "One file can hold several kinds of content at once. These are the section names you can use: feats, backgrounds, species, subclasses, classes, spells, items, keywords, creatures. Entries reference each other by id, so a feat here can grant a spell defined in the same file.",
+  "spells": [
+    {
+      "id": "hearth-glow",
+      "name": "Hearth Glow",
+      "level": 0,
+      "school": "Evocation",
+      "classes": [
+        "cleric",
+        "druid"
+      ],
+      "castingTime": "Action",
+      "range": "Touch",
+      "components": [
+        "V"
+      ],
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "An object you touch sheds warm light in a 20-foot radius and keeps you comfortable in cold weather."
+    }
+  ],
+  "feats": [
+    {
+      "id": "keeper-of-the-flame",
+      "name": "Keeper of the Flame",
+      "type": "origin",
+      "repeatable": false,
+      "description": "You know the Hearth Glow cantrip (Wisdom is your spellcasting ability for it) and have Resistance to Cold damage.",
+      "effects": [
+        {
+          "type": "spell",
+          "spell": "hearth-glow",
+          "ability": "wis"
+        },
+        {
+          "type": "resistance",
+          "damage": "cold"
+        }
+      ]
+    }
+  ]
+}

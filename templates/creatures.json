@@ -1,0 +1,84 @@
+{
+  "_help": "Creatures for familiars, companions and summons (Companions panel on the sheet). 'cr' can be 0, 0.125, 0.25, 0.5 or 1-30. 'speed' uses \"30 ft.\" style text. Actions with 'attack' (to-hit bonus) and 'damage' (dice like 1d8+2) become clickable rolls. Beasts can also be used for Wild Shape.",
+  "creatures": [
+    {
+      "id": "hearth-hound",
+      "name": "Hearth Hound",
+      "size": "Medium",
+      "type": "beast",
+      "cr": 0.5,
+      "ac": 13,
+      "hp": 22,
+      "hitDice": "4d8 + 4",
+      "speed": {
+        "walk": "40 ft."
+      },
+      "abilities": {
+        "str": 14,
+        "dex": 14,
+        "con": 12,
+        "int": 3,
+        "wis": 12,
+        "cha": 6
+      },
+      "senses": "passive Perception 13",
+      "traits": [
+        {
+          "name": "Keen Nose",
+          "description": "Advantage on Wisdom (Perception) checks that rely on smell."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Bite",
+          "description": "Melee attack, reach 5 ft. If the target is Medium or smaller, it has the Prone condition.",
+          "attack": 4,
+          "damage": "1d6+2",
+          "damageType": "piercing"
+        }
+      ]
+    },
+    {
+      "id": "lantern-spirit",
+      "name": "Lantern Spirit",
+      "size": "Small",
+      "type": "celestial",
+      "cr": 1,
+      "ac": 14,
+      "hp": 18,
+      "hitDice": "",
+      "speed": {
+        "walk": "20 ft.",
+        "fly": "40 ft."
+      },
+      "abilities": {
+        "str": 6,
+        "dex": 16,
+        "con": 12,
+        "int": 10,
+        "wis": 14,
+        "cha": 14
+      },
+      "senses": "darkvision 60 ft., passive Perception 12",
+      "traits": [
+        {
+          "name": "Glow",
+          "description": "Sheds Bright Light in a 10-foot radius."
+        }
+      ],
+      "actions": [
+        {
+          "name": "Radiant Spark",
+          "description": "Ranged attack, range 60 ft.",
+          "attack": 5,
+          "damage": "1d10+3",
+          "damageType": "radiant"
+        },
+        {
+          "name": "Soothe",
+          "description": "One creature within 30 ft. regains 1d4 Hit Points. No roll is needed for this action."
+        }
+      ]
+    }
+  ]
+}

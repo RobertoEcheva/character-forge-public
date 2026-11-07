@@ -1,0 +1,61 @@
+{
+  "_help": "A 2014-rules background. Add \"edition\": \"2014\" to every entry meant for 2014 characters (without it an entry is 2024). 2014 backgrounds have no abilities or feat; they give skills/tools/languages and a background feature. 'equipmentGroups' is a list of separate picks: a single 'Included' option is given automatically.",
+  "backgrounds": [
+    {
+      "edition": "2014",
+      "id": "river-guide",
+      "name": "River Guide",
+      "description": "You ferried travelers and cargo along wild rivers.",
+      "effects": [
+        {
+          "type": "skill",
+          "skill": "athletics"
+        },
+        {
+          "type": "skill",
+          "skill": "survival"
+        },
+        {
+          "type": "tool",
+          "tool": "navigators-tools"
+        }
+      ],
+      "choices": [
+        {
+          "kind": "language",
+          "id": "languages",
+          "label": "One language of your choice",
+          "count": 1,
+          "from": "any"
+        }
+      ],
+      "feature": {
+        "id": "river-guide-feature",
+        "name": "Riverfolk Welcome",
+        "level": 0,
+        "description": "Boatmen and dock workers along any river will give you and your companions a ride or a place to sleep."
+      },
+      "equipment": [],
+      "equipmentGroups": [
+        [
+          {
+            "label": "Included",
+            "items": [
+              {
+                "item": "torch",
+                "name": "Torch",
+                "count": 3
+              },
+              {
+                "item": "bedroll",
+                "name": "Bedroll",
+                "count": 1
+              }
+            ],
+            "gp": 10
+          }
+        ]
+      ]
+    }
+  ]
+}

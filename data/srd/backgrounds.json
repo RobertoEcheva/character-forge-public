@@ -1,0 +1,284 @@
+[
+ {
+  "id": "acolyte",
+  "name": "Acolyte",
+  "source": "srd",
+  "abilities": [
+   "int",
+   "wis",
+   "cha"
+  ],
+  "feat": "magic-initiate",
+  "effects": [
+   {
+    "type": "skill",
+    "skill": "insight"
+   },
+   {
+    "type": "skill",
+    "skill": "religion"
+   },
+   {
+    "type": "tool",
+    "tool": "calligraphers-supplies"
+   }
+  ],
+  "equipment": [
+   {
+    "label": "A",
+    "items": [
+     {
+      "item": "calligraphers-supplies",
+      "name": "Calligrapher's Supplies",
+      "count": 1
+     },
+     {
+      "item": "book",
+      "name": "Book (Prayers)",
+      "count": 1
+     },
+     {
+      "item": "holy-symbols",
+      "name": "Holy Symbols",
+      "count": 1
+     },
+     {
+      "item": "parchment",
+      "name": "Parchment",
+      "count": 10
+     },
+     {
+      "item": "robe",
+      "name": "Robe",
+      "count": 1
+     }
+    ],
+    "gp": 8
+   },
+   {
+    "label": "B",
+    "items": [],
+    "gp": 50
+   }
+  ],
+  "featPresets": {
+   "list": [
+    "cleric"
+   ]
+  }
+ },
+ {
+  "id": "criminal",
+  "name": "Criminal",
+  "source": "srd",
+  "abilities": [
+   "dex",
+   "con",
+   "int"
+  ],
+  "feat": "alert",
+  "effects": [
+   {
+    "type": "skill",
+    "skill": "sleight-of-hand"
+   },
+   {
+    "type": "skill",
+    "skill": "stealth"
+   },
+   {
+    "type": "tool",
+    "tool": "thieves-tools"
+   }
+  ],
+  "equipment": [
+   {
+    "label": "A",
+    "items": [
+     {
+      "item": "dagger",
+      "name": "Dagger",
+      "count": 2
+     },
+     {
+      "item": "thieves-tools",
+      "name": "Thieves' Tools",
+      "count": 1
+     },
+     {
+      "item": "crowbar",
+      "name": "Crowbar",
+      "count": 1
+     },
+     {
+      "item": "pouch",
+      "name": "Pouch",
+      "count": 2
+     },
+     {
+      "item": "clothes-travelers",
+      "name": "Clothes, Traveler's",
+      "count": 1
+     }
+    ],
+    "gp": 16
+   },
+   {
+    "label": "B",
+    "items": [],
+    "gp": 50
+   }
+  ]
+ },
+ {
+  "id": "sage",
+  "name": "Sage",
+  "source": "srd",
+  "abilities": [
+   "con",
+   "int",
+   "wis"
+  ],
+  "feat": "magic-initiate",
+  "effects": [
+   {
+    "type": "skill",
+    "skill": "arcana"
+   },
+   {
+    "type": "skill",
+    "skill": "history"
+   },
+   {
+    "type": "tool",
+    "tool": "calligraphers-supplies"
+   }
+  ],
+  "equipment": [
+   {
+    "label": "A",
+    "items": [
+     {
+      "item": "quarterstaff",
+      "name": "Quarterstaff",
+      "count": 1
+     },
+     {
+      "item": "calligraphers-supplies",
+      "name": "Calligrapher's Supplies",
+      "count": 1
+     },
+     {
+      "item": "book",
+      "name": "Book (History)",
+      "count": 1
+     },
+     {
+      "item": "parchment",
+      "name": "Parchment",
+      "count": 8
+     },
+     {
+      "item": "robe",
+      "name": "Robe",
+      "count": 1
+     }
+    ],
+    "gp": 8
+   },
+   {
+    "label": "B",
+    "items": [],
+    "gp": 50
+   }
+  ],
+  "featPresets": {
+   "list": [
+    "wizard"
+   ]
+  }
+ },
+ {
+  "id": "soldier",
+  "name": "Soldier",
+  "source": "srd",
+  "abilities": [
+   "str",
+   "dex",
+   "con"
+  ],
+  "feat": "savage-attacker",
+  "effects": [
+   {
+    "type": "skill",
+    "skill": "athletics"
+   },
+   {
+    "type": "skill",
+    "skill": "intimidation"
+   }
+  ],
+  "equipment": [
+   {
+    "label": "A",
+    "items": [
+     {
+      "item": "spear",
+      "name": "Spear",
+      "count": 1
+     },
+     {
+      "item": "shortbow",
+      "name": "Shortbow",
+      "count": 1
+     },
+     {
+      "item": "arrows",
+      "name": "Arrows",
+      "count": 20
+     },
+     {
+      "item": "",
+      "name": "Item of your choice",
+      "count": 1
+     },
+     {
+      "item": "healers-kit",
+      "name": "Healer's Kit",
+      "count": 1
+     },
+     {
+      "item": "quiver",
+      "name": "Quiver",
+      "count": 1
+     },
+     {
+      "item": "clothes-travelers",
+      "name": "Clothes, Traveler's",
+      "count": 1
+     }
+    ],
+    "gp": 14
+   },
+   {
+    "label": "B",
+    "items": [],
+    "gp": 50
+   }
+  ],
+  "choices": [
+   {
+    "kind": "tool",
+    "id": "tool-1",
+    "label": "Choose one kind of Gaming Set (see \"Equipment\")",
+    "count": 1,
+    "from": [
+     "dice",
+     "dragonchess",
+     "playing-cards",
+     "three-dragon-ante"
+    ]
+   }
+  ]
+ }
+]

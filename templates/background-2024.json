@@ -1,0 +1,69 @@
+{
+  "_help": "A 2024-rules background: three abilities (the player assigns +2/+1 or +1/+1/+1), one Origin feat, skills and a tool as effects, and starting equipment as options A/B.",
+  "backgrounds": [
+    {
+      "id": "river-guide",
+      "name": "River Guide",
+      "description": "You ferried travelers and cargo along wild rivers.",
+      "abilities": [
+        "str",
+        "dex",
+        "wis"
+      ],
+      "feat": "lucky-break",
+      "_help_feat": "The feat id must exist: an SRD feat (alert, magic-initiate, savage-attacker, skilled) or one of your custom feats, imported first or in the same file.",
+      "effects": [
+        {
+          "type": "skill",
+          "skill": "athletics"
+        },
+        {
+          "type": "skill",
+          "skill": "survival"
+        },
+        {
+          "type": "tool",
+          "tool": "navigators-tools"
+        }
+      ],
+      "equipment": [
+        {
+          "label": "A",
+          "_help": "'item' is an item id (empty \"\" for something not in the item list); 'name' is what shows in the inventory.",
+          "items": [
+            {
+              "item": "torch",
+              "name": "Torch",
+              "count": 3
+            },
+            {
+              "item": "bedroll",
+              "name": "Bedroll",
+              "count": 1
+            },
+            {
+              "item": "",
+              "name": "River map",
+              "count": 1
+            }
+          ],
+          "gp": 12
+        },
+        {
+          "label": "B",
+          "items": [],
+          "gp": 50
+        }
+      ]
+    }
+  ],
+  "feats": [
+    {
+      "id": "lucky-break",
+      "name": "Lucky Break",
+      "type": "origin",
+      "repeatable": false,
+      "description": "Once per Long Rest, when you fail a saving throw, you can reroll it and must use the new roll."
+    }
+  ]
+}

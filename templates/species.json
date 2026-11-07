@@ -1,0 +1,149 @@
+{
+  "_help": "A species (2024) / race (2014). 'traits' are features; 'level' is the character level the trait starts working. 'lineages' are optional sub-choices (subraces in 2014). Species-level 'choices' are asked once (size, spellcasting ability...).",
+  "species": [
+    {
+      "id": "tidekin",
+      "name": "Tidekin",
+      "description": "Sea-touched folk with gills behind their ears.",
+      "creatureType": "Humanoid",
+      "size": "Medium",
+      "sizeOptions": [
+        "Small",
+        "Medium"
+      ],
+      "speed": 30,
+      "choices": [
+        {
+          "kind": "size",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            "Small",
+            "Medium"
+          ]
+        },
+        {
+          "_help": "An ability the player picks once, used by the spell traits below through {\"fromChoice\": \"species:lineage-ability\"}.",
+          "kind": "option",
+          "id": "lineage-ability",
+          "label": "Spellcasting ability for Tidekin spells",
+          "count": 1,
+          "options": [
+            {
+              "id": "int",
+              "name": "INT"
+            },
+            {
+              "id": "wis",
+              "name": "WIS"
+            },
+            {
+              "id": "cha",
+              "name": "CHA"
+            }
+          ]
+        }
+      ],
+      "traits": [
+        {
+          "id": "tidekin-body",
+          "name": "Amphibious",
+          "level": 1,
+          "description": "You can breathe air and water, you have a Swim Speed equal to your Speed, and you have Darkvision with a range of 60 feet.",
+          "effects": [
+            {
+              "type": "speedMode",
+              "mode": "swim",
+              "value": "walk"
+            },
+            {
+              "type": "darkvision",
+              "range": 60
+            },
+            {
+              "type": "resistance",
+              "damage": "cold"
+            }
+          ]
+        },
+        {
+          "id": "tidekin-frost",
+          "name": "Sea Chill",
+          "level": 1,
+          "description": "You know the Ray of Frost cantrip.",
+          "effects": [
+            {
+              "type": "spell",
+              "spell": "ray-of-frost",
+              "ability": {
+                "fromChoice": "species:lineage-ability"
+              }
+            }
+          ]
+        },
+        {
+          "id": "tidekin-skill",
+          "name": "Wave Reader",
+          "level": 1,
+          "description": "You gain proficiency in one of these skills: Athletics, Perception or Survival.",
+          "choices": [
+            {
+              "kind": "skill",
+              "id": "skill",
+              "label": "Wave Reader skill",
+              "count": 1,
+              "from": [
+                "athletics",
+                "perception",
+                "survival"
+              ]
+            }
+          ]
+        }
+      ],
+      "lineageLabel": "Current",
+      "lineages": [
+        {
+          "id": "tidekin-warm-current",
+          "name": "Warm Current",
+          "traits": [
+            {
+              "id": "tidekin-warm-spell",
+              "name": "Healing Tide",
+              "level": 3,
+              "description": "From character level 3, you always have Cure Wounds prepared.",
+              "effects": [
+                {
+                  "type": "spell",
+                  "spell": "cure-wounds",
+                  "ability": {
+                    "fromChoice": "species:lineage-ability"
+                  },
+                  "minLevel": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tidekin-deep-current",
+          "name": "Deep Current",
+          "traits": [
+            {
+              "id": "tidekin-deep-sight",
+              "name": "Deep Sight",
+              "level": 1,
+              "description": "Your Darkvision reaches 120 feet.",
+              "effects": [
+                {
+                  "type": "darkvision",
+                  "range": 120
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

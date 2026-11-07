@@ -1,0 +1,104 @@
+{
+  "_help": "A subclass. 'classId' is the class it belongs to (barbarian, bard, cleric, druid, fighter, monk, paladin, ranger, rogue, sorcerer, warlock, wizard). 'level' on each feature is the CLASS level. Always-prepared spells use 'minLevel' (class level).",
+  "subclasses": [
+    {
+      "id": "oath-of-the-hearth",
+      "name": "Oath of the Hearth",
+      "classId": "paladin",
+      "summary": "Guardians of homes and the people in them",
+      "description": "Paladins who swear to protect the hearth: villages, families and travelers seeking shelter.",
+      "features": [
+        {
+          "id": "oath-of-the-hearth-spells",
+          "name": "Hearth Spells",
+          "level": 3,
+          "description": "You always have these spells prepared: level 3 Sanctuary, Shield of Faith; level 5 Aid; level 9 Protection from Energy.",
+          "effects": [
+            {
+              "type": "spell",
+              "spell": "sanctuary",
+              "minLevel": 3
+            },
+            {
+              "type": "spell",
+              "spell": "shield-of-faith",
+              "minLevel": 3
+            },
+            {
+              "type": "spell",
+              "spell": "aid",
+              "minLevel": 5
+            },
+            {
+              "type": "spell",
+              "spell": "protection-from-energy",
+              "minLevel": 9
+            }
+          ]
+        },
+        {
+          "_help": "A feature with a pick-one choice. Each option can carry its own effects.",
+          "id": "oath-of-the-hearth-vow",
+          "name": "Hearth Vow",
+          "level": 3,
+          "description": "Choose the vow you keep.",
+          "choices": [
+            {
+              "kind": "option",
+              "id": "vow",
+              "label": "Hearth Vow",
+              "count": 1,
+              "options": [
+                {
+                  "id": "warden",
+                  "name": "Warden",
+                  "description": "+1 AC while wearing armor.",
+                  "effects": [
+                    {
+                      "type": "acBonus",
+                      "value": 1,
+                      "whileArmored": true
+                    }
+                  ]
+                },
+                {
+                  "id": "host",
+                  "name": "Host",
+                  "description": "Proficiency in Insight and Persuasion.",
+                  "effects": [
+                    {
+                      "type": "skill",
+                      "skill": "insight"
+                    },
+                    {
+                      "type": "skill",
+                      "skill": "persuasion"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_help": "A feature with limited uses. 'max' can be a number, \"pb\" (Proficiency Bonus) or {\"ability\": \"cha\"}. 'reset' is short or long.",
+          "id": "oath-of-the-hearth-ward",
+          "name": "Hearthward",
+          "level": 7,
+          "description": "As a Reaction when an ally within 10 feet is hit, you reduce the damage by 1d10 + your Charisma modifier.",
+          "effects": [
+            {
+              "type": "resource",
+              "id": "hearthward",
+              "label": "Hearthward",
+              "max": {
+                "ability": "cha"
+              },
+              "reset": "long"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

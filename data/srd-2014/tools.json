@@ -1,0 +1,173 @@
+[
+ {
+  "id": "disguise-kit",
+  "name": "Disguise Kit"
+ },
+ {
+  "id": "forgery-kit",
+  "name": "Forgery Kit"
+ },
+ {
+  "id": "herbalism-kit",
+  "name": "Herbalism Kit"
+ },
+ {
+  "id": "poisoners-kit",
+  "name": "Poisoner's Kit"
+ },
+ {
+  "id": "alchemists-supplies",
+  "name": "Alchemist's Supplies",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "brewers-supplies",
+  "name": "Brewer's Supplies",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "calligraphers-supplies",
+  "name": "Calligrapher's Supplies",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "carpenters-tools",
+  "name": "Carpenter's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "cartographers-tools",
+  "name": "Cartographer's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "cobblers-tools",
+  "name": "Cobbler's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "cooks-utensils",
+  "name": "Cook's utensils",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "glassblowers-tools",
+  "name": "Glassblower's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "jewelers-tools",
+  "name": "Jeweler's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "leatherworkers-tools",
+  "name": "Leatherworker's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "masons-tools",
+  "name": "Mason's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "painters-supplies",
+  "name": "Painter's Supplies",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "potters-tools",
+  "name": "Potter's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "smiths-tools",
+  "name": "Smith's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "tinkers-tools",
+  "name": "Tinker's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "weavers-tools",
+  "name": "Weaver's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "woodcarvers-tools",
+  "name": "Woodcarver's Tools",
+  "group": "Artisan's Tools"
+ },
+ {
+  "id": "dice-set",
+  "name": "Dice Set",
+  "group": "Gaming Sets"
+ },
+ {
+  "id": "playing-card-set",
+  "name": "Playing Card Set",
+  "group": "Gaming Sets"
+ },
+ {
+  "id": "bagpipes",
+  "name": "Bagpipes",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "drum",
+  "name": "Drum",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "dulcimer",
+  "name": "Dulcimer",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "flute",
+  "name": "Flute",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "lute",
+  "name": "Lute",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "lyre",
+  "name": "Lyre",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "horn",
+  "name": "Horn",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "pan-flute",
+  "name": "Pan flute",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "shawm",
+  "name": "Shawm",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "viol",
+  "name": "Viol",
+  "group": "Musical Instrument"
+ },
+ {
+  "id": "navigators-tools",
+  "name": "Navigator's Tools",
+  "group": "Other Tools"
+ },
+ {
+  "id": "thieves-tools",
+  "name": "Thieves' Tools",
+  "group": "Other Tools"
+ }
+]

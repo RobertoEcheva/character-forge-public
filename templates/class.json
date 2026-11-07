@@ -1,0 +1,460 @@
+{
+  "_help": "A whole class (advanced). 'levels' must have exactly 20 rows; each row lists the ids of features gained at that level, and 'extras' holds numbers that grow with level (here 'second_wind_uses', shown as a Resource on the sheet). The subclass for it is in the same file. Simple version: no spellcasting. To add spellcasting, add \"spellcasting\": {\"ability\": \"wis\", \"progression\": \"half\"} and 'cantrips', 'prepared' and 'slots' (9 numbers) on each level row.",
+  "classes": [
+    {
+      "id": "warden",
+      "name": "Warden",
+      "description": "A sturdy protector who stands between danger and allies.",
+      "hitDie": 10,
+      "primaryAbilities": [
+        "str",
+        "con"
+      ],
+      "primaryAbilitiesAll": true,
+      "saves": [
+        "str",
+        "con"
+      ],
+      "skillChoice": {
+        "count": 2,
+        "from": [
+          "athletics",
+          "insight",
+          "intimidation",
+          "perception",
+          "survival"
+        ]
+      },
+      "effects": [
+        {
+          "type": "armor",
+          "armor": "light"
+        },
+        {
+          "type": "armor",
+          "armor": "medium"
+        },
+        {
+          "type": "armor",
+          "armor": "heavy"
+        },
+        {
+          "type": "armor",
+          "armor": "shield"
+        },
+        {
+          "type": "weapon",
+          "weapon": "simple"
+        },
+        {
+          "type": "weapon",
+          "weapon": "martial"
+        },
+        {
+          "type": "save",
+          "ability": "str"
+        },
+        {
+          "type": "save",
+          "ability": "con"
+        }
+      ],
+      "choices": [],
+      "startingEquipment": [
+        {
+          "label": "A",
+          "items": [
+            {
+              "item": "chain-shirt",
+              "name": "Chain Shirt",
+              "count": 1
+            },
+            {
+              "item": "shield",
+              "name": "Shield",
+              "count": 1
+            },
+            {
+              "item": "longsword",
+              "name": "Longsword",
+              "count": 1
+            }
+          ],
+          "gp": 10
+        },
+        {
+          "label": "B",
+          "items": [],
+          "gp": 120
+        }
+      ],
+      "multiclass": {
+        "prerequisites": [
+          [
+            {
+              "ability": "str",
+              "min": 13
+            }
+          ],
+          [
+            {
+              "ability": "con",
+              "min": 13
+            }
+          ]
+        ],
+        "effects": [
+          {
+            "type": "armor",
+            "armor": "shield"
+          }
+        ],
+        "choices": []
+      },
+      "subclassLevel": 3,
+      "levels": [
+        {
+          "level": 1,
+          "profBonus": 2,
+          "features": [
+            "warden-guard-stance",
+            "warden-weapon-training"
+          ],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 2,
+          "profBonus": 2,
+          "features": [
+            "warden-second-breath"
+          ],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 3,
+          "profBonus": 2,
+          "features": [
+            "warden-subclass"
+          ],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 4,
+          "profBonus": 2,
+          "features": [
+            "warden-asi-4"
+          ],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 5,
+          "profBonus": 3,
+          "features": [
+            "warden-extra-attack"
+          ],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 6,
+          "profBonus": 3,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 7,
+          "profBonus": 3,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 8,
+          "profBonus": 3,
+          "features": [
+            "warden-asi-8"
+          ],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 9,
+          "profBonus": 4,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 2
+          }
+        },
+        {
+          "level": 10,
+          "profBonus": 4,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 11,
+          "profBonus": 4,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 12,
+          "profBonus": 4,
+          "features": [
+            "warden-asi-12"
+          ],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 13,
+          "profBonus": 5,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 14,
+          "profBonus": 5,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 15,
+          "profBonus": 5,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 16,
+          "profBonus": 5,
+          "features": [
+            "warden-asi-16"
+          ],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 17,
+          "profBonus": 6,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 18,
+          "profBonus": 6,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 19,
+          "profBonus": 6,
+          "features": [
+            "warden-asi-19"
+          ],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        },
+        {
+          "level": 20,
+          "profBonus": 6,
+          "features": [],
+          "extras": {
+            "second_wind_uses": 3
+          }
+        }
+      ],
+      "features": [
+        {
+          "id": "warden-guard-stance",
+          "name": "Guard Stance",
+          "level": 1,
+          "description": "As a Bonus Action you take a guarding stance: +2 AC until the start of your next turn.",
+          "effects": [
+            {
+              "type": "toggle",
+              "id": "guard-stance",
+              "label": "Guard Stance",
+              "description": "+2 AC until the start of your next turn.",
+              "effects": [
+                {
+                  "type": "acBonus",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "warden-weapon-training",
+          "name": "Weapon Training",
+          "level": 1,
+          "description": "You master two kinds of weapons.",
+          "choices": [
+            {
+              "kind": "weaponMastery",
+              "id": "mastery",
+              "label": "Weapon Mastery: two weapons",
+              "count": 2
+            }
+          ]
+        },
+        {
+          "id": "warden-second-breath",
+          "name": "Second Breath",
+          "level": 2,
+          "description": "As a Bonus Action regain 1d10 + your Warden level Hit Points. Uses are shown under Resources."
+        },
+        {
+          "id": "warden-subclass",
+          "name": "Warden Subclass",
+          "level": 3,
+          "description": "Choose a Warden subclass.",
+          "hidden": true
+        },
+        {
+          "id": "warden-extra-attack",
+          "name": "Extra Attack",
+          "level": 5,
+          "description": "You can attack twice when you take the Attack action."
+        },
+        {
+          "id": "warden-asi-4",
+          "name": "Ability Score Improvement",
+          "level": 4,
+          "description": "Take the Ability Score Improvement feat or another feat you qualify for.",
+          "choices": [
+            {
+              "kind": "feat",
+              "id": "feat",
+              "label": "Ability Score Improvement or feat",
+              "featTypes": [
+                "general"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "warden-asi-8",
+          "name": "Ability Score Improvement",
+          "level": 8,
+          "description": "Take the Ability Score Improvement feat or another feat you qualify for.",
+          "choices": [
+            {
+              "kind": "feat",
+              "id": "feat",
+              "label": "Ability Score Improvement or feat",
+              "featTypes": [
+                "general"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "warden-asi-12",
+          "name": "Ability Score Improvement",
+          "level": 12,
+          "description": "Take the Ability Score Improvement feat or another feat you qualify for.",
+          "choices": [
+            {
+              "kind": "feat",
+              "id": "feat",
+              "label": "Ability Score Improvement or feat",
+              "featTypes": [
+                "general"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "warden-asi-16",
+          "name": "Ability Score Improvement",
+          "level": 16,
+          "description": "Take the Ability Score Improvement feat or another feat you qualify for.",
+          "choices": [
+            {
+              "kind": "feat",
+              "id": "feat",
+              "label": "Ability Score Improvement or feat",
+              "featTypes": [
+                "general"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "warden-asi-19",
+          "name": "Ability Score Improvement",
+          "level": 19,
+          "description": "Take the Ability Score Improvement feat or another feat you qualify for.",
+          "choices": [
+            {
+              "kind": "feat",
+              "id": "feat",
+              "label": "Ability Score Improvement or feat",
+              "featTypes": [
+                "general"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subclasses": [
+    {
+      "id": "bulwark",
+      "name": "Bulwark",
+      "classId": "warden",
+      "summary": "Living fortress",
+      "features": [
+        {
+          "id": "bulwark-iron-skin",
+          "name": "Iron Skin",
+          "level": 3,
+          "description": "Your Hit Point maximum increases by 1 per Warden level, and you have Resistance to Poison damage.",
+          "effects": [
+            {
+              "type": "hpPerLevel",
+              "value": 1,
+              "classId": "warden"
+            },
+            {
+              "type": "resistance",
+              "damage": "poison"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

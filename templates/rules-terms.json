@@ -1,0 +1,20 @@
+{
+  "_help": "Rules terms ('keywords'): words that get a hover definition everywhere they appear. 'kind' is rule, condition or action. Terms are matched with the same capitalization; conditions also match lowercase. 'aliases' are other spellings to match.",
+  "keywords": [
+    {
+      "id": "inspired",
+      "term": "Inspired",
+      "aliases": [
+        "inspired"
+      ],
+      "kind": "condition",
+      "description": "While Inspired, you add 1d4 to one ability check of your choice before the condition ends."
+    },
+    {
+      "id": "home-turf",
+      "term": "Home Turf",
+      "kind": "rule",
+      "description": "A place you know well. You have Advantage on Wisdom (Survival) checks to navigate it."
+    }
+  ]
+}
